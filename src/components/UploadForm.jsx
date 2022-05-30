@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Form = styled.section`
-    background-color: red;
+const FormSection = styled.section`
+  width: 100%;
+  background-color: gray;
 `;
 
 function UploadForm() {
   return (
-    <Form>
+    <FormSection>
       <h1>hey</h1>
-    </Form>
+    </FormSection>
   );
 }
 
