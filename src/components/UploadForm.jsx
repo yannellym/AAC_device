@@ -3,59 +3,110 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FormSection = styled.section`
-  width: 60%;
+  width: 50%;
   height: 50vh;
-  background-color: #A0B49C;
+  background-color: #c9e8d2;
   margin: 5% auto;
   border-radius: 10px;
+  box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, .4);
   
-  form{
-    padding: 15% 5%;
-    border: red solid 2px;
-    width: 60%;
-    height: 50%;
-    margin: 0 auto;
-  }
-  label{
-    font-size: 2rem;
-  }
-  input{
-    height: 40px;
-    width: 50%;
-    border-radius: 10px;
-    border: none;
-  }
-  button{
-    display: flex;
-    height: 40px;
-    min-width: 40%;
-    padding: 3%;
-    color: white;
-    justify-content: space-around;
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(239,50,50);
-    margin: 5% auto;
+    input[type=file]:focus + .file-dummy {
+      outline: 2px solid rgba(255,255,255,0.5);
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    label {
+      font-weight: 500;
+      display: block;
+      margin: 4px 0;
+      text-transform: uppercase;
+      font-size: 13px;
+      overflow: hidden;
+    }
+    .form-controll {
+      display: block;
+      padding: 8px 16px;
+      width: 100%;
+      font-size: 16px;
+      background-color: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-weight: 200;
+      
+      &:focus {
+        outline: 2px solid rgba(255,255,255,0.5);
+        outline: -webkit-focus-ring-color auto 5px;
+      }
+    }
+    
+    button {
+      padding: 8px 30px;
+      background: rgba(255,255,255,0.8);
+      color: #053777;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 11px;
+      border: 0;
+      text-shadow: 0 1px 2px #fff;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    
+    .form-group {
+      max-width: 500px;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+    
+    .back-to-article {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 12px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      text-decoration: none;
+      display: inline-block;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 18px;
+      transition: all 0.3s ease-in-out;
+      opacity: 0.6;
+      
+      &:hover {
+        opacity: 1;
+        background: rgba(0,0,0,0.8);
+      }
+    }
+    input[type=file]:valid {
+      border-color: rgba(0,255,0,0.4);
+      background-color: rgba(0,255,0,0.3);
+  
+      .success {
+        display: inline-block;
+      }
+      .default {
+        display: none;
+      }
+    }
   }
 `;
 
 function UploadForm() {
   return (
     <FormSection>
-      <form>
-        <div>
-          <label htmlFor="name">Photo Label : </label>
-          <input id="photoLabel" type="text" />
+      <form action method="post">
+        <div className="form-group">
+          <label htmlFor="title">Label for Photo :</label>
+          <input type="text" name="title" id="title" className="form-controll" />
         </div>
-        <div>
-          <label htmlFor="email">Upload Photo : </label>
-          <input id="UploadPhoto" type="file" />
+        <div className="form-group file-area">
+          <label htmlFor="images">Please select Photo: </label>
+          <input type="file" name="images" id="images" required="required" multiple="multiple" />
         </div>
-        <button type="submit">
-          <h1>UPLOAD</h1>
-          <img src="https://img.icons8.com/material-rounded/24/000000/upload--v1.png" />
-        </button>
+        <div className="form-group">
+          <button type="submit">Upload Photo</button>
+        </div>
       </form>
+
     </FormSection>
   );
 }
