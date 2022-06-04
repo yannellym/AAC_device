@@ -5,6 +5,7 @@ import Upload from './pages/Upload';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
 import GlobalStyles from './styles/GlobalStyles';
+import Welcome from './pages/Welcome';
 
 function App() {
   return (
@@ -12,9 +13,9 @@ function App() {
       <div>
         <GlobalStyles />
         <NavBar />
-        <Upload />
         <Routes>
           <Route exact path="/" component={Home} />
+          <Route exact path="/welcome" component={Welcome} />
           <Route exact path="/upload" component={Upload} />
           <Route exact path="/profile" component={Profile} />
         </Routes>
