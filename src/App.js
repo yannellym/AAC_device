@@ -1,26 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
-import Upload from './pages/Upload';
-import Profile from './pages/Profile';
-import Home from './pages/Home';
+import Upload from './routes/Upload';
+import Profile from './routes/Profile';
+import Home from './routes/Home';
 import GlobalStyles from './styles/GlobalStyles';
-import Welcome from './pages/Welcome';
+import Welcome from './routes/Welcome';
+import Error from './routes/Error';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <GlobalStyles />
-        <NavBar />
-        <Routes>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/welcome" component={Welcome} />
-          <Route exact path="/upload" component={Upload} />
-          <Route exact path="/profile" component={Profile} />
-        </Routes>
-      </div>
-    </Router>
+    <BrowserRouter>
+      <GlobalStyles />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="welcome" element={<Welcome />} />
+        <Route path="upload" element={<Upload />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
