@@ -1,10 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Grid = styled.div`
+`;
 
 function Gallery() {
   return (
-    <div>
-      <h1>Gallery</h1>
-    </div>
+    <Grid />
   );
 }
 

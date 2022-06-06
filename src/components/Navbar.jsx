@@ -5,7 +5,7 @@ import Logo from '../assets/images/logo-opt1.png';
 
 const Nav = styled.div`
   background: #95DC8385;
-  height: 99px;
+  height: 7rem;
   padding: 20px;
   display: flex;
   align-items: center;

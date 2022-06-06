@@ -10,14 +10,15 @@ const FormSection = styled.section`
   border-radius: 10px;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, .4);
   
-    input[type=file]:focus + .file-dummy {
+    input[type=file]:focus {
       outline: 2px solid rgba(255,255,255,0.5);
       outline: -webkit-focus-ring-color auto 5px;
     }
     label {
       font-weight: 500;
       display: block;
-      margin: 4px 0;
+      margin: 5px 0;
+      padding: 5% 0;
       text-transform: uppercase;
       font-size: 13px;
       overflow: hidden;
@@ -29,7 +30,7 @@ const FormSection = styled.section`
       font-size: 16px;
       background-color: rgba(255,255,255,0.2);
       border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
+      color: black;
       font-weight: 200;
       
       &:focus {
@@ -41,19 +42,20 @@ const FormSection = styled.section`
     button {
       padding: 8px 30px;
       background: rgba(255,255,255,0.8);
-      color: #053777;
+      color: red;
       text-transform: uppercase;
       font-weight: 600;
       font-size: 11px;
       border: 0;
-      text-shadow: 0 1px 2px #fff;
+      box-shadow: 0px 1px 2px black;
       cursor: pointer;
       border-radius: 8px;
+      height: 40px;
     }
     
     .form-group {
-      max-width: 500px;
-      margin: auto;
+      max-width: 400px;
+      margin: 2rem auto;
       margin-bottom: 30px;
     }
     
@@ -106,7 +108,6 @@ function UploadForm() {
           <button type="submit">Upload Photo</button>
         </div>
       </form>
-
     </FormSection>
   );
 }
