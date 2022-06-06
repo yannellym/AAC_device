@@ -1,11 +1,12 @@
 import React from 'react';
-import Gallery from '../components/Gallery';
+import InputBar from '../components/InputBar';
+// import Gallery from '../components/Gallery';
 
 function Home() {
   return (
     <div>
-      <h1>Home Screen</h1>
-      <Gallery />
+      <InputBar />
+      {/* <Gallery /> */}
     </div>
   );
 }
