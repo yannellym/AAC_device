@@ -17,6 +17,7 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
+
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((res) => {
@@ -30,5 +31,15 @@ export const signInWithGoogle = () => {
     })
     .catch((error) => {
       console.log(error);
+    });
+};
+
+export const googleSignOut = () => {
+  auth.signOut()
+    .then(() => {
+      console.log('Signout Succesfull');
+      window.location = '/';
+    }, (error) => {
+      console.log('Signout Failed', error);
     });
 };
