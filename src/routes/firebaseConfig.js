@@ -23,12 +23,10 @@ export const signInWithGoogle = () => {
       const name = res.user.displayName;
       const { email } = res.user;
       const profilePic = res.user.photoURL;
-      console.log(name);
-      console.log(email);
-      console.log(profilePic);
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
       localStorage.setItem('profilePic', profilePic);
+      window.location = 'home';
     })
     .catch((error) => {
       console.log(error);

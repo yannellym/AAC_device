@@ -26,10 +26,12 @@ function NavBar() {
   return (
     <Nav>
       <div>
-        <img className="nav--logo" src={Logo} alt="polly logo" />
+        <NavLink to="/home">
+          <img className="nav--logo" src={Logo} alt="polly logo" />
+        </NavLink>
       </div>
       <div className="nav--icons">
-        <NavLink to="/">
+        <NavLink to="/home">
           <img src="https://img.icons8.com/material-rounded/48/000000/home.png" alt="home icon" />
         </NavLink>
         <NavLink to="/upload">
