@@ -3,7 +3,13 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const firebaseConfig = {
- 
+  apiKey: 'AIzaSyB1s5iYhH5m9XNebIdEJEwkoVtvM8XuQa4',
+  authDomain: 'polly-speech.firebaseapp.com',
+  projectId: 'polly-speech',
+  storageBucket: 'polly-speech.appspot.com',
+  messagingSenderId: '275699629632',
+  appId: '1:275699629632:web:a9c821ea13392fd7ea69a5',
+  measurementId: 'G-4X3ELRGQZT',
 };
 
 // Initialize Firebase
