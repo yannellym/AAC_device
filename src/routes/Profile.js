@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import profilePhoto from '../assets/images/profilephoto.png';
+// import profilePhoto from '../assets/images/profilephoto.png';
 import NavBar from '../components/Navbar';
 
 const ProfileDiv = styled.div`
@@ -29,7 +29,7 @@ function Profile() {
     <div>
       <NavBar />
       <ProfileDiv>
-        <img src={profilePhoto} alt="profile" />
+        <img src={localStorage.getItem('profilePic')} alt="profile" />
         <h1>Hi! </h1>
         <h1>
           My name is

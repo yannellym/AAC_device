@@ -29,7 +29,7 @@ const Button = styled.button`
       box-shadow: 
         0 -1px 0 rgba(0, 0, 0, .04),
         0 8px 4px rgba(0, 0, 0, .25),
-        0 5px 0 3px #c8dafc;
+        0 3px 0 3px #c8dafc;
     }
   `;
 

@@ -26,7 +26,9 @@ function NavBar() {
   return (
     <Nav>
       <div>
-        <img className="nav--logo" src={Logo} alt="polly logo" />
+        <NavLink to="/home">
+          <img className="nav--logo" src={Logo} alt="polly logo" />
+        </NavLink>
       </div>
       <div className="nav--icons">
         <NavLink to="/home">

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -11,6 +12,9 @@ const LoginDiv = styled.div`
   background-size: cover;
   height: 100vh;
   
+  h1{
+    text-align: center;
+  }
   .title{
     font-size: 2.5rem;
     color: rgb(160,53,34);
@@ -67,4 +71,3 @@ function Login() {
 }
 
 export default Login;
-
