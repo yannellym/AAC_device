@@ -25,7 +25,6 @@ const Nav = styled.div`
     padding-left: 13%;
   }
 `;
-
 function NavBar() {
   return (
     <Nav>
