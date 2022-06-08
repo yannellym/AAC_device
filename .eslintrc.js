@@ -30,14 +30,22 @@ module.exports = {
     'no-multiple-empty-lines': [
       'error',
       {
-        'max': 1,
-        'maxEOF': 1
-      }
+        max: 1,
+        maxEOF: 1,
+      },
+    ],
+    'no-console': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+        message: 'Unexpected property on console object was called',
+      },
     ],
     'no-underscore-dangle': [
       'error',
       {
-        'allow': [
+        allow: [
           '_d',
           '_dh',
           '_h',
@@ -45,9 +53,9 @@ module.exports = {
           '_m',
           '_n',
           '_t',
-          '_text'
-        ]
-      }
+          '_text',
+        ],
+      },
     ],
     'object-curly-newline': 0,
     'react/jsx-filename-extension': 0,
@@ -60,21 +68,21 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
-        'components': [
-          'Link'
+        components: [
+          'Link',
         ],
-        'specialLink': [
+        specialLink: [
           'to',
           'hrefLeft',
-          'hrefRight'
+          'hrefRight',
         ],
-        'aspects': [
+        aspects: [
           'noHref',
           'invalidHref',
-          'preferButton'
-        ]
-      }
-    ]
+          'preferButton',
+        ],
+      },
+    ],
   },
-  
+
 };
