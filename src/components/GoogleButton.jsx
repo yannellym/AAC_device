@@ -9,7 +9,10 @@ const Button = styled.button`
     padding: 42px 66px 42px 82px;
     border: none;
     border-radius: 3px;
-    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+    box-shadow: 
+        0 -1px 0 rgba(0, 0, 0, .04),
+        0 8px 4px rgba(0, 0, 0, .25),
+        0 3px 0 3px #c8dafc;
     
     background-image: url("https://img.icons8.com/color/48/undefined/google-logo.png");
     background-color: white;

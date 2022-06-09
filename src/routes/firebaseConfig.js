@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+// import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB1s5iYhH5m9XNebIdEJEwkoVtvM8XuQa4',
@@ -27,7 +28,7 @@ export const signInWithGoogle = () => {
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
       localStorage.setItem('profilePic', profilePic);
-      window.location = 'home';
+      window.location = '/home';
     })
     .catch((error) => {
       console.log(error);
@@ -43,3 +44,6 @@ export const googleSignOut = () => {
       console.log('Signout Failed', error);
     });
 };
+
+// storage_bucket
+
