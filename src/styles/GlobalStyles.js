@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import '@fontsource/darker-grotesque';
+import '@fontsource/palanquin-dark';
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -8,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
     }
     body{
-        font-family: "Darker Grotesque", sans-serif;
+        font-family: "Darker Grotesque", "Palanquin Dark", sans-serif;
         overflow-x: hidden;
     }
     h1,h2,h3,h4,h5,h6{
