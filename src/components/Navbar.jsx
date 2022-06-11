@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Logo from '../assets/images/logo-opt1.png';
-import { googleSignOut } from '../routes/firebaseConfig';
+// import { googleSignOut } from '../routes/firebaseConfig';
 
 const Nav = styled.div`
   background: #95DC8385;
@@ -46,10 +46,10 @@ function NavBar() {
           <img src="https://img.icons8.com/material/48/000000/user-male-circle--v1.png" alt="user icon" />
           <p>Profile</p>
         </NavLink>
-        <div onClick={googleSignOut}>
+        {/* <div onClick={googleSignOut}>
           <img src="https://img.icons8.com/ios-filled/50/undefined/exit-sign.png" />
           <p>logout</p>
-        </div>
+        </div> */}
       </div>
     </Nav>
   );

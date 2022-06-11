@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
+import uuid from 'react-uuid';
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from 'firebase/auth';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB1s5iYhH5m9XNebIdEJEwkoVtvM8XuQa4',
@@ -15,36 +17,48 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const database = getFirestore(app);
-export const storage = getStorage(app);
+const app = initializeApp(firebaseConfig);
+console.log(app);
+const auth = getAuth();
+const storage = getStorage();
 
-const provider = new GoogleAuthProvider();
+export function signup(email, password) {
+  return createUserWithEmailAndPassword(auth, email, password);
+}
 
-export const signInWithGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((res) => {
-      const name = res.user.displayName;
-      const { email } = res.user;
-      const profilePic = res.user.photoURL;
-      localStorage.setItem('name', name);
-      localStorage.setItem('email', email);
-      localStorage.setItem('profilePic', profilePic);
-      window.location = '/home';
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+export function login(email, password) {
+  return signInWithEmailAndPassword(auth, email, password);
+}
 
-export const googleSignOut = () => {
-  auth.signOut()
-    .then(() => {
-      console.log('Signout Succesfull');
-      window.location = '/';
-    }, (error) => {
-      console.log('Signout Failed', error);
-    });
-};
+export function logout() {
+  return signOut(auth);
+}
 
+// Custom Hook
+export function useAuth() {
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+    return unsub;
+  }, []);
+
+  return currentUser;
+}
+
+// Storage
+export async function upload(file, currentUser, setLoading) {
+  const fileRef = ref(storage, `/${currentUser.uid}/${currentUser.uid}${uuid()}.png`);
+
+  setLoading(true);
+
+  const snapshot = await uploadBytes(fileRef, file);
+  console.log(snapshot);
+  const photoURL = await getDownloadURL(fileRef);
+
+  updateProfile(currentUser, { photoURL });
+
+  setLoading(false);
+  // eslint-disable-next-line no-alert
+  alert('Uploaded file!');
+}
