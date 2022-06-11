@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDrop } from 'react-dnd';
+import Picture from './Picture';
+import { ITEM_TYPES } from '../utils/types';
 
 const Bar = styled.div`
   width: 90%;
@@ -14,6 +17,10 @@ const Bar = styled.div`
     display: flex;
     flex-direction: row-reverse;
     width: 10%;
+  }
+  .bar-btn{
+    background: none;
+    cursor: pointer;
   }
   .deleteDiv{
     border-right: 5px solid black;
@@ -31,12 +38,37 @@ const Bar = styled.div`
   }
 `;
 
-function InputBar() {
+function InputBar({ data }) {
+  const [inputBar, setInputBar] = React.useState([]);
+
+  function addImageToBar(id) {
+    const picList = data.filter((pic) => id === pic.id);
+    const curPic = picList[0];
+    if (!curPic.inBar) {
+      curPic.inBar = !curPic.inBar;
+      setInputBar((prevState) => [...prevState, curPic]);
+    }
+  }
+
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: ITEM_TYPES.IMAGE,
+    drop: (item) => {
+      addImageToBar(item.picId);
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  }));
+
   return (
     <Bar>
-      <div>Input bar</div>
+      <div className="inputBar" ref={drop} style={{ backgroundColor: isOver ? '#bbf' : 'rgba(0,0,0,.12' }}>
+        {inputBar.map((pic) => <Picture key={pic.id} picURL={pic.url} id={pic.id} />)}
+      </div>
       <section className="deleteDiv">
-        <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="deleteBtn" alt="delete button" />
+        <button type="button">
+          <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
+        </button>
       </section>
       <section className="checkDiv">
         <img src="https://img.icons8.com/color/150/undefined/checked--v1.png" className="checkBtn" alt="check button" />
