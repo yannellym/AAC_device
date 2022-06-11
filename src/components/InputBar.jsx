@@ -18,6 +18,10 @@ const Bar = styled.div`
     flex-direction: row-reverse;
     width: 10%;
   }
+  .bar-btn{
+    background: none;
+    cursor: pointer;
+  }
   .deleteDiv{
     border-right: 5px solid black;
   }
@@ -62,7 +66,9 @@ function InputBar({ data }) {
         {inputBar.map((pic) => <Picture key={pic.id} picURL={pic.url} id={pic.id} />)}
       </div>
       <section className="deleteDiv">
-        <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="deleteBtn" alt="delete button" />
+        <button type="button">
+          <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
+        </button>
       </section>
       <section className="checkDiv">
         <img src="https://img.icons8.com/color/150/undefined/checked--v1.png" className="checkBtn" alt="check button" />
