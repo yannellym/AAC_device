@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Logo from '../assets/images/logo-opt1.png';
+// import { googleSignOut } from '../routes/firebaseConfig';
 
 const Nav = styled.div`
   background: #95DC8385;
-  height: 7rem;
+  height: 7.5rem;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -20,24 +21,35 @@ const Nav = styled.div`
     padding-right: 50px;
     gap: 60px;
   }
+  p{
+    padding-left: 13%;
+  }
 `;
-
 function NavBar() {
   return (
     <Nav>
       <div>
-        <img className="nav--logo" src={Logo} alt="polly logo" />
+        <NavLink to="/home">
+          <img className="nav--logo" src={Logo} alt="polly logo" />
+        </NavLink>
       </div>
       <div className="nav--icons">
-        <NavLink to="/">
+        <NavLink to="/home">
           <img src="https://img.icons8.com/material-rounded/48/000000/home.png" alt="home icon" />
+          <p>Home</p>
         </NavLink>
         <NavLink to="/upload">
           <img src="https://img.icons8.com/material-sharp/48/000000/upload--v1.png" alt="upload icon" />
+          <p>Upload</p>
         </NavLink>
         <NavLink to="/profile">
           <img src="https://img.icons8.com/material/48/000000/user-male-circle--v1.png" alt="user icon" />
+          <p>Profile</p>
         </NavLink>
+        {/* <div onClick={googleSignOut}>
+          <img src="https://img.icons8.com/ios-filled/50/undefined/exit-sign.png" />
+          <p>logout</p>
+        </div> */}
       </div>
     </Nav>
   );

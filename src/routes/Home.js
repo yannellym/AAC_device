@@ -4,6 +4,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import InputBar from '../components/InputBar';
 import Gallery from '../components/Gallery';
 import angry from '../assets/images/angry.png';
+import NavBar from '../components/Navbar';
 
 const PictureList = [
   {
@@ -70,6 +71,7 @@ const PictureList = [
 function Home() {
   return (
     <div>
+      <NavBar />
       <DndProvider backend={HTML5Backend}>
         <InputBar data={PictureList} />
         <Gallery data={PictureList} />

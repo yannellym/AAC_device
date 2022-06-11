@@ -1,46 +1,33 @@
-import React from 'react';
-import styled from 'styled-components';
-import profilePhoto from '../assets/images/profilephoto.png';
+import React, { useEffect, useState } from 'react';
+import { useAuth, upload } from './firebaseConfig';
 
-const ProfileDiv = styled.div`
-  width: 80%;
-  height: 75vh;
-  margin: 3% auto;
-  text-align: center;
-  line-height: 2.3;
-  img{
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    border-radius: 50%;
-  }
-  text{
-    color: #FB7171;
-    font-size: 30px;
-    padding: 0 3%;
-    margin: 0 20px;
-    box-shadow: 5px 2px 6px gray;
-  }
-`;
+export default function ProfileTest() {
+  const currentUser = useAuth();
+  const [photo, setPhoto] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [photoURL, setPhotoURL] = useState('https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png');
 
-function Profile() {
+  function handleChange(e) {
+    if (e.target.files[0]) {
+      setPhoto(e.target.files[0]);
+    }
+  }
+
+  function handleClick() {
+    upload(photo, currentUser, setLoading);
+  }
+
+  useEffect(() => {
+    if (currentUser?.photoURL) {
+      setPhotoURL(currentUser.photoURL);
+    }
+  }, [currentUser]);
+
   return (
-    <div>
-      <ProfileDiv>
-        <img src={profilePhoto} alt="profile" />
-        <h1>Hi! </h1>
-        <h1>
-          My name is
-          <text> NAME </text>.
-        </h1>
-        <h1>
-          I am
-          <text>AGE</text>
-          years old .
-        </h1>
-      </ProfileDiv>
+    <div className="fields">
+      <input type="file" onChange={handleChange} />
+      <button type="button" disabled={loading || !photo} onClick={handleClick}>Upload</button>
+      <img src={photoURL} alt="Avatar" className="avatar" />
     </div>
   );
 }
-
-export default Profile;
