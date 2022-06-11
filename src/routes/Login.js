@@ -1,9 +1,10 @@
-/* eslint-disable import/no-cycle */
-import React from 'react';
-import styled from 'styled-components';
+/* eslint-disable no-alert */
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import background2 from '../assets/images/background2.png';
-import GoogleButton from '../components/GoogleButton';
+import { signup, login, logout, useAuth } from './firebaseConfig';
+import Profile from './Profile';
 
 const LoginDiv = styled.div`
   background-color: #ffaa00;
@@ -54,20 +55,76 @@ const LoginDiv = styled.div`
   }
   `;
 
-function Login() {
+export default function App() {
+  const [loading, setLoading] = useState(false);
+  const currentUser = useAuth();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  async function handleSignup() {
+    setLoading(true);
+    try {
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      alert('Error!');
+    }
+    setLoading(false);
+  }
+
+  async function handleLogin() {
+    setLoading(true);
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      alert('Error!');
+    }
+    setLoading(false);
+  }
+
+  async function handleLogout() {
+    setLoading(true);
+    try {
+      await logout();
+    } catch {
+      alert('Error!');
+    }
+    setLoading(false);
+  }
+
   return (
-    <LoginDiv>
-      <p className="title">Sign In</p>
-      <section className="login-box">
-        <p className="welcome">I&apos;m so glad you&apos;re here 😊 </p>
-        <h1>Log in to get started!</h1>
-        <GoogleButton />
-        <text>
-          <Link to="/home">Sign in as a guest</Link>
-        </text>
-      </section>
-    </LoginDiv>
+    <div id="main">
+      {!currentUser
+        && (
+        <LoginDiv>
+          <p className="title">Sign In</p>
+          <section className="login-box">
+            <p className="welcome">I&apos;m so glad you&apos;re here 😊 </p>
+            <h1>Log in to get started!</h1>
+            <text>
+              <div className="fields">
+                <form>
+                  <input ref={emailRef} placeholder="Email" autoComplete="email" />
+                  <input ref={passwordRef} type="password" autoComplete="email" placeholder="Password" />
+                  <button type="button" disabled={loading} onClick={handleSignup}>Sign Up</button>
+                  <button type="button" disabled={loading} onClick={handleLogin}>Log In</button>
+                </form>
+              </div>
+              <Link to="/home">Sign in as a guest</Link>
+            </text>
+            <div>Currently logged in as: { currentUser?.email } </div>
+          </section>
+        </LoginDiv>
+        )}
+
+      {currentUser
+        && (
+        <>
+          <Profile />
+          <button type="button" disabled={loading || !currentUser} onClick={handleLogout}>Log Out</button>
+        </>
+        )}
+
+    </div>
   );
 }
-
-export default Login;
