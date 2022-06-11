@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './routes/Login';
 import Upload from './routes/Upload';
-import ProfileTest from './routes/ProfileTest';
+import Profile from './routes/Profile';
 import Home from './routes/Home';
 import GlobalStyles from './styles/GlobalStyles';
 import Error from './routes/Error';
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="home" element={<Home />} />
         <Route path="upload" element={<Upload />} />
-        <Route path="profiletest" element={<ProfileTest />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
