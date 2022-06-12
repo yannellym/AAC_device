@@ -33,7 +33,6 @@ const Bar = styled.div`
   }
   .checkBtn{
     width: 100%;
-    height: 80%;
     margin-top: 13%;
   }
 `;
@@ -60,18 +59,34 @@ function InputBar({ data }) {
     }),
   }));
 
+  function removeImage() {
+    if (inputBar.length) {
+      const curImg = inputBar[inputBar.length - 1];
+      curImg.inBar = !curImg.inBar;
+      setInputBar((prevState) => [...prevState.slice(0, prevState.length - 1)]);
+    }
+  }
+
+  function textToSpeech() {
+    if (inputBar.length) {
+      console.log('click');
+    }
+  }
+
   return (
     <Bar>
       <div className="inputBar" ref={drop} style={{ backgroundColor: isOver ? '#bbf' : 'rgba(0,0,0,.12' }}>
         {inputBar.map((pic) => <Picture key={pic.id} picURL={pic.url} id={pic.id} />)}
       </div>
       <section className="deleteDiv">
-        <button type="button">
+        <button type="button" onClick={removeImage}>
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
       </section>
-      <section className="checkDiv">
-        <img src="https://img.icons8.com/color/150/undefined/checked--v1.png" className="checkBtn" alt="check button" />
+      <section className="checkDiv" onClick={textToSpeech}>
+        <button type="button">
+          <img src="https://img.icons8.com/color/150/undefined/checked--v1.png" className="bar-btn checkBtn" alt="check button" />
+        </button>
       </section>
     </Bar>
   );
