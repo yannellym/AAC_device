@@ -87,7 +87,7 @@ export default function Signup() {
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
     } catch {
-      alert('Error!');
+      alert('Woah! Please check your email and password ');
     }
     setLoading(false);
   }

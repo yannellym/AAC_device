@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth, upload } from './firebaseConfig';
 
-export default function ProfileTest() {
+export default function Profile() {
   const currentUser = useAuth();
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
