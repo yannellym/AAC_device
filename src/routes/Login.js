@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import background2 from '../assets/images/background2.png';
-import { login, logout, useAuth } from './firebaseConfig';
+import { login, useAuth } from './firebaseConfig';
 import Home from './Home';
 
 const LoginDiv = styled.div`
@@ -97,16 +97,6 @@ export default function LogIn() {
     setLoading(false);
   }
 
-  async function handleLogout() {
-    setLoading(true);
-    try {
-      await logout();
-    } catch {
-      alert('Error!');
-    }
-    setLoading(false);
-  }
-
   return (
     <div id="main">
       {!currentUser
@@ -132,10 +122,7 @@ export default function LogIn() {
 
       {currentUser
         && (
-        <>
-          <Home />
-          <button type="button" disabled={loading || !currentUser} onClick={handleLogout}>Log Out</button>
-        </>
+        <Home />
         )}
     </div>
   );

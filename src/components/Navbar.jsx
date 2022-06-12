@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logo from '../assets/images/logo-opt1.png';
 import { logout } from '../routes/firebaseConfig';
 
@@ -25,12 +25,15 @@ const Nav = styled.div`
   p{
     padding-left: 13%;
   }
+  text{
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👋</text></svg>") 16 0,auto; 
+  }
 `;
 function NavBar() {
   async function handleLogout() {
     try {
       await logout();
-        <Navigate to="/" />;
+      window.location = '/';
     } catch {
       alert('Error!');
     }
@@ -55,10 +58,10 @@ function NavBar() {
           <img src="https://img.icons8.com/material/48/000000/user-male-circle--v1.png" alt="user icon" />
           <p>Profile</p>
         </NavLink>
-        <button type="button" onClick={handleLogout}>
+        <text onClick={handleLogout}>
           <img src="https://img.icons8.com/ios-filled/50/undefined/exit-sign.png" />
           <p>logout</p>
-        </button>
+        </text>
       </div>
     </Nav>
   );
