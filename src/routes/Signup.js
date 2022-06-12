@@ -67,6 +67,12 @@ const LoginDiv = styled.div`
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
   }
+  h4{
+      padding-top: 5%;
+  }
+  span{
+    color: green;
+  }
   `;
 
 export default function Signup() {
@@ -110,9 +116,9 @@ export default function Signup() {
               <input ref={passwordRef} type="password" autoComplete="email" placeholder="Password" />
             </form>
             <button type="button" disabled={loading} onClick={handleSignup}>Sign Up</button>
-            <text>
-              Already have an account? <Link to="/">Log in!</Link>
-            </text>
+            <h4>
+              Already have an account? <Link to="/"><span>Log in!</span></Link>
+            </h4>
           </section>
         </LoginDiv>
         )}
