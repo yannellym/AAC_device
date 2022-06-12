@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import background2 from '../assets/images/background2.png';
-import { login, logout, useAuth } from './firebaseConfig';
+import { signup, logout, useAuth } from './firebaseConfig';
 import Profile from './Profile';
 
 const LoginDiv = styled.div`
@@ -67,30 +67,19 @@ const LoginDiv = styled.div`
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
   }
-  .loggedInAs{
-    text-align: center;
-    font-size: 18px;
-    margin-top: 5rem;
-    color: black;
-    width: 60vw;
-    margin: 0 auto;
-  }
-  span{
-    color: green;
-  }
   `;
 
-export default function LogIn() {
+export default function Signup() {
   const [loading, setLoading] = useState(false);
   const currentUser = useAuth();
 
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  async function handleLogin() {
+  async function handleSignup() {
     setLoading(true);
     try {
-      await login(emailRef.current.value, passwordRef.current.value);
+      await signup(emailRef.current.value, passwordRef.current.value);
     } catch {
       alert('Error!');
     }
@@ -112,21 +101,19 @@ export default function LogIn() {
       {!currentUser
         && (
         <LoginDiv>
-          <p className="title">Sign In</p>
+          <p className="title">Sign Up</p>
           <section className="login-box">
-            <p className="welcome">I&apos;m so glad you&apos;re here 😊 </p>
-            <h1>Log in to get started!</h1>
+            <p className="welcome">Welcome to our Community 😊 </p>
+            <h1>Sign Up to get started!</h1>
             <form>
               <input ref={emailRef} placeholder="Email" autoComplete="email" />
               <input ref={passwordRef} type="password" autoComplete="email" placeholder="Password" />
             </form>
-            <button type="button" disabled={loading} onClick={handleLogin}>Log In</button>
+            <button type="button" disabled={loading} onClick={handleSignup}>Sign Up</button>
             <text>
-              <Link to="/home">Sign in as a guest *</Link>
+              Already have an account? <Link to="/">Log in!</Link>
             </text>
-            <h4>Don&apos;t have an account? <Link to="/signup"><span>Sign Up!</span></Link></h4>
           </section>
-          <div className="loggedInAs"> * For the full experience, we recommend that you sign up and create your own account. </div>
         </LoginDiv>
         )}
 
