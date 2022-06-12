@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import background2 from '../assets/images/background2.png';
 import { login, logout, useAuth } from './firebaseConfig';
-import Profile from './Profile';
+import Home from './Home';
 
 const LoginDiv = styled.div`
   background-color: #ffaa00;
@@ -92,7 +92,7 @@ export default function LogIn() {
     try {
       await login(emailRef.current.value, passwordRef.current.value);
     } catch {
-      alert('Error!');
+      alert('Woah! Please check your email and password. ');
     }
     setLoading(false);
   }
@@ -133,7 +133,7 @@ export default function LogIn() {
       {currentUser
         && (
         <>
-          <Profile />
+          <Home />
           <button type="button" disabled={loading || !currentUser} onClick={handleLogout}>Log Out</button>
         </>
         )}
