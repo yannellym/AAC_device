@@ -8,6 +8,9 @@ const ImageContainer = styled.div`
   :hover {
     border: 1px solid black;
   }
+  h2{
+    text-align: center;
+  }
   
 `;
 
@@ -33,7 +36,7 @@ function Picture({ id, picURL, label, picInBar }) {
         width="150px"
         style={{ border: isDragging ? '5px solid pink' : '0px' }}
       />
-      <h1>{label}</h1>
+      <h2>{label}</h2>
     </ImageContainer>
   );
 }
