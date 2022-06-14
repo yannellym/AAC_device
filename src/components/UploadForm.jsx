@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { collection, addDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useAuth, database, storage } from '../routes/firebaseConfig';
 
 const FormSection = styled.section`
   width: 50%;
@@ -93,19 +96,67 @@ const FormSection = styled.section`
 `;
 
 function UploadForm() {
+  const currentUser = useAuth();
+  const dbInstance = collection(database, `${currentUser?.email}`);
+  const [imageUpload, setImageUpload] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [imageUrls, setImageUrls] = useState([]);
+
+  const [cards, setCards] = useState({
+    label: '',
+    imgUrl: '',
+  });
+
+  const handleInputs = (e) => {
+    const inputs = { [e?.target]: e?.target.value };
+    setCards({ ...cards, ...inputs });
+    setImageUpload(e?.target.files[0]);
+    console.log(cards.label);
+  };
+  const handleSubmit = () => {
+    console.log('submitted');
+    addDoc(dbInstance, { cards });
+    const imageRef = ref(storage, `/${currentUser.email}/${imageUpload.name}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls((prev) => [...prev, url]);
+        console.log(imageUrls);
+      });
+    })
+      .then(() => {
+        console.log('submitted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <FormSection>
-      <form action method="post">
+      <form>
         <div className="form-group">
           <label htmlFor="title">Label for Photo :</label>
-          <input type="text" name="title" id="title" className="form-controll" />
+          <input
+            type="text"
+            name="label"
+            value={cards.label}
+            onChange={(event) => handleInputs(event)}
+            className="form-controll"
+          />
         </div>
         <div className="form-group file-area">
           <label htmlFor="images">Please select Photo: </label>
-          <input type="file" name="images" id="images" required="required" multiple="multiple" />
+          <input
+            type="file"
+            name="imgUrl"
+            value={cards.imgUrl}
+            onChange={(event) => handleInputs(event)}
+            required="required"
+            multiple="multiple"
+          />
         </div>
         <div className="form-group">
-          <button type="submit">Upload Photo</button>
+          <button type="submit" onClick={handleSubmit}>Upload Photo</button>
         </div>
       </form>
     </FormSection>
