@@ -8,10 +8,13 @@ const ImageContainer = styled.div`
   :hover {
     border: 1px solid black;
   }
+  h2{
+    text-align: center;
+  }
   
 `;
 
-function Picture({ id, picURL, picInBar }) {
+function Picture({ id, picURL, label, picInBar }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ITEM_TYPES.IMAGE,
     item: {
@@ -29,10 +32,11 @@ function Picture({ id, picURL, picInBar }) {
       <img
         ref={drag}
         src={picURL}
-        alt="cute pic"
+        alt="card pic"
         width="150px"
         style={{ border: isDragging ? '5px solid pink' : '0px' }}
       />
+      <h2>{label}</h2>
     </ImageContainer>
   );
 }
