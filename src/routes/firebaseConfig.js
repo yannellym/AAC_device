@@ -3,6 +3,7 @@ import uuid from 'react-uuid';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from 'firebase/auth';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
@@ -18,9 +19,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-console.log(app);
 const auth = getAuth();
-const storage = getStorage();
+export const storage = getStorage();
+export const database = getFirestore(app);
 
 export function signup(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);

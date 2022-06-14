@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState, useReducer } from 'react';
 import styled from 'styled-components';
+import { collection, addDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useAuth, database, storage, upload } from '../routes/firebaseConfig';
 
 const FormSection = styled.section`
   width: 50%;
@@ -91,18 +94,77 @@ const FormSection = styled.section`
     }
   }
 `;
-
+const formReducer = (state, event) => {
+  if (event.reset) {
+    return {
+      label: '',
+      imgUrl: '',
+    };
+  }
+  return {
+    ...state,
+    [event.name]: event.value,
+  };
+};
 function UploadForm() {
+  const currentUser = useAuth();
+  const dbInstance = collection(database, `${currentUser?.email}`);
+  // const [imageUpload, setImageUpload] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [imageUrls, setImageUrls] = useState([]);
+  const [imageUpload, setImageUpload] = useState(null);
+  const [formData, setFormData] = useReducer(formReducer, {});
+
+  const handleChange = (event) => {
+    setFormData({
+      name: event.target.name,
+      value: event.target.value,
+    });
+    setImageUpload(event.target.files[0]);
+    console.log(event.target.files[0]);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addDoc(dbInstance, formData);
+    const imageRef = ref(storage, `${currentUser.email}/${imageUpload.name}`);
+    upload(imageUpload, formData.imgUrl);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls((prev) => [...prev, url]);
+      });
+      console.log(imageUrls);
+    })
+      .then(() => {
+        console.log('submitted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <FormSection>
-      <form action method="post">
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="title">Label for Photo :</label>
-          <input type="text" name="title" id="title" className="form-controll" />
+          <label htmlFor="label">Label for Photo :</label>
+          <input
+            type="text"
+            name="label"
+            value={formData.label || ''}
+            onChange={handleChange}
+            className="form-controll"
+          />
         </div>
         <div className="form-group file-area">
-          <label htmlFor="images">Please select Photo: </label>
-          <input type="file" name="images" id="images" required="required" multiple="multiple" />
+          <label htmlFor="imgUrl">Please select Photo: </label>
+          <input
+            type="file"
+            name="imgUrl"
+            onChange={handleChange}
+            value={formData.imgUrl || ''}
+            required="required"
+            multiple="multiple"
+          />
         </div>
         <div className="form-group">
           <button type="submit">Upload Photo</button>
