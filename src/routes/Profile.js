@@ -53,11 +53,17 @@ const ProfileDiv = styled.div`
     width: 200px;
   }
   .userInformation{
-    border: red solid 3px;
-    width: 70vw;
-    margin: 0 auto;
+    width: 60%;
+    margin: 0 15%;
+    height: 250px;
   }
-  .userInformation >h1
+  .userInformation > h1{
+    line-height: 2;
+  }
+  span{
+    color: red;
+    border-bottom: solid 2px red;
+  }
 `;
 
 const formReducer = (state, event) => {
@@ -187,9 +193,9 @@ export default function Profile() {
           <button type="button" className={photo ? 'button' : null} disabled={loading || !photo} onClick={handleClick}>Upload</button>
         </section>
         <div className="userInformation">
-          <h1> Hi, My name is <span>{userInformation[0]?.name}</span></h1>
-          <h1> I am <span>{userInformation[0]?.age} </span>years old</h1>
-          <h1>My Email is <span>{currentUser?.email}</span></h1>
+          <h1> Hi, My name is <span>{userInformation[0]?.name}</span> .</h1>
+          <h1> I am <span>{userInformation[0]?.age} </span>years old .</h1>
+          <h1>My Email is <span>{currentUser?.email}</span>.</h1>
         </div>
       </ProfileDiv>
     </div>
