@@ -91,7 +91,6 @@ const Grid = styled.div`
 `;
 function Home() {
   const currentUser = useAuth();
-  console.log(currentUser?.email);
   const [details, setDetails] = useState([]);
 
   console.log(details.map((item) => item.imgUrl.slice(12)));

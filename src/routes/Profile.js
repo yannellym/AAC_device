@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useAuth, upload } from './firebaseConfig';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { useAuth, upload, database } from './firebaseConfig';
 import NavBar from '../components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,21 +20,6 @@ const ProfileDiv = styled.div`
     width: 75%;
     border-radius: 50%;
     max-height: 300px;
-  }
-  .info-input{
-    color: #FB7171;
-    font-size: 20px;
-    padding: 1% 3%;
-    margin: 0 20px;
-    box-shadow: 5px 2px 6px gray;
-    width: 30%;
-  }
-  .age{
-    width: 11%;
-  }
-  ::placeholder{
-    color: #ededed;
-    opacity: 0.5;
   }
   .save-button{
     background: none;
@@ -66,36 +52,82 @@ const ProfileDiv = styled.div`
     right: 20px;
     width: 200px;
   }
+  .userInformation{
+    border: red solid 3px;
+    width: 70vw;
+    margin: 0 auto;
+  }
+  .userInformation >h1
 `;
+
+const formReducer = (state, event) => {
+  if (event.reset) {
+    return {
+      name: '',
+      age: 0,
+    };
+  }
+  return {
+    ...state,
+    [event.name]: event.value,
+  };
+};
 
 export default function Profile() {
   const currentUser = useAuth();
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState(null);
-  const [age, setAge] = useState(100);
   const [photoURL, setPhotoURL] = useState('https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png');
-
   const [show, setShow] = useState(false);
-
+  const [informationData, setInformationData] = useReducer(formReducer, {});
+  const dbInstance = collection(database, `info${currentUser?.email}`);
+  const [userInformation, setUserInformation] = useState('' || []);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  function handleChange(e) {
-    if (e.target.files[0]) {
-      setPhoto(e.target.files[0]);
+  function handleChange(e) { // to handle the change when the file button is clicked
+    if (e.target.files[0]) { // select only the first file chosen
+      setPhoto(e.target.files[0]); // to set the profile photo to be the file selected
     }
   }
+
+  const handleInformationChange = (event) => { // to handle the change of information in the profile
+    setInformationData({ // This will set the information data to the information coming from the inputs
+      name: event.target.name,
+      value: event.target.value,
+    });
+    console.log(informationData);
+  };
 
   function handleClick() {
-    upload(photo, currentUser, setLoading);
+    upload(photo, currentUser, setLoading); // to upload the photo to the database
   }
 
+  const handleSubmit = (event) => { // handles the information in the modal window form
+    event.preventDefault();
+    addDoc(dbInstance, informationData) // add the data to the onformationData database
+      .then(() => {
+        console.log('submitted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const getData = async () => {
+    const informationCollection = collection(database, `info${currentUser?.email}`); // go into the collection
+    const informationSnapshot = await getDocs(informationCollection); // get the information from the collection by doing a snapshot
+    const informationInputs = informationSnapshot.docs.map((doc) => ( // map through all of the documents in the collection
+      { ...doc.data(), id: doc.id, // get the document data, and its ID.
+      }));
+    setUserInformation(informationInputs); // Set the user information.
+  };
+
   useEffect(() => {
-    if (currentUser?.photoURL) {
-      setPhotoURL(currentUser.photoURL);
+    if (currentUser?.photoURL) { // if there is a current user, take the photoUrl
+      setPhotoURL(currentUser.photoURL); // set the photo url to the user's photo URL.
     }
-  }, [currentUser]);
+    getData(); // get the user's information from the database.
+  }, [currentUser]); // refresh whenever the user's information changes.
 
   return (
     <div>
@@ -115,9 +147,12 @@ export default function Profile() {
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
-                    type="name"
+                    type="text"
+                    name="name"
                     placeholder="Awesome Name"
                     autoFocus
+                    value={informationData.name}
+                    onChange={handleInformationChange}
                   />
                 </Form.Group>
                 <Form.Group
@@ -127,18 +162,21 @@ export default function Profile() {
                   <Form.Label>Age</Form.Label>
                   <Form.Control
                     type="number"
+                    name="age"
                     placeholder="100"
                     autoFocus
+                    value={informationData.age}
+                    onChange={handleInformationChange}
                   />
                 </Form.Group>
+                <Button variant="success" onClick={handleSubmit} type="button">
+                  Save Changes
+                </Button>
               </Form>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Close
-              </Button>
-              <Button variant="success" onClick={handleClose}>
-                Save Changes
               </Button>
             </Modal.Footer>
           </Modal>
@@ -148,18 +186,11 @@ export default function Profile() {
           <input type="file" onChange={handleChange} />
           <button type="button" className={photo ? 'button' : null} disabled={loading || !photo} onClick={handleClick}>Upload</button>
         </section>
-        <h1>
-          Hi, My name is
-          <input type="text" className="info-input" onChange={(e) => setName(e.target.value)} placeholder={name} />
-          <button type="button" className="save-button">✅</button>
-        </h1>
-        <h1>
-          I am
-          <input type="text" className="info-input age" onChange={(e) => setAge(e.target.value)} placeholder={age} />
-          years old
-          <button type="button" className="save-button">  ✅</button>
-        </h1>
-        <h1>Email: {currentUser?.email}</h1>
+        <div className="userInformation">
+          <h1> Hi, My name is <span>{userInformation[0]?.name}</span></h1>
+          <h1> I am <span>{userInformation[0]?.age} </span>years old</h1>
+          <h1>My Email is <span>{currentUser?.email}</span></h1>
+        </div>
       </ProfileDiv>
     </div>
   );
