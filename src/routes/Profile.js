@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { useAuth, upload } from './firebaseConfig';
 import NavBar from '../components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ProfileDiv = styled.div`
   width: 80%;
@@ -15,7 +19,6 @@ const ProfileDiv = styled.div`
     width: 75%;
     border-radius: 50%;
     max-height: 300px;
-    border: red solid 1px;
   }
   .info-input{
     color: #FB7171;
@@ -54,6 +57,15 @@ const ProfileDiv = styled.div`
   .button:hover{
     background-color: red;
   }
+  .primaryModal{
+    color: red;
+    background-color: red;
+  }
+  div{
+    position: absolute;
+    right: 20px;
+    width: 200px;
+  }
 `;
 
 export default function Profile() {
@@ -63,7 +75,12 @@ export default function Profile() {
   const [name, setName] = useState(null);
   const [age, setAge] = useState(100);
   const [photoURL, setPhotoURL] = useState('https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png');
-  console.log(currentUser);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function handleChange(e) {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
@@ -84,6 +101,48 @@ export default function Profile() {
     <div>
       <NavBar />
       <ProfileDiv>
+        <div>
+          <Button variant="light" onClick={handleShow}>
+            <img src="https://img.icons8.com/material-outlined/48/undefined/settings--v1.png" />
+          </Button>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Edit your personal information</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="name"
+                    placeholder="Awesome Name"
+                    autoFocus
+                  />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Label>Age</Form.Label>
+                  <Form.Control
+                    type="number"
+                    placeholder="100"
+                    autoFocus
+                  />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="success" onClick={handleClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
         <section className="photo-section">
           <img src={photoURL} alt="profile" />
           <input type="file" onChange={handleChange} />
