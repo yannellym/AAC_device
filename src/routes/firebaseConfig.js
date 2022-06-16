@@ -8,13 +8,13 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB1s5iYhH5m9XNebIdEJEwkoVtvM8XuQa4',
-  authDomain: 'polly-speech.firebaseapp.com',
-  projectId: 'polly-speech',
-  storageBucket: 'polly-speech.appspot.com',
-  messagingSenderId: '275699629632',
-  appId: '1:275699629632:web:a9c821ea13392fd7ea69a5',
-  measurementId: 'G-4X3ELRGQZT',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
