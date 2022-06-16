@@ -39,7 +39,7 @@ const Bar = styled.div`
 
 function InputBar({ data }) {
   const [inputBar, setInputBar] = React.useState([]);
-  console.log(data);
+
   function addImageToBar(id) {
     const picList = data.filter((pic) => id === pic.id);
     const curPic = picList[0];

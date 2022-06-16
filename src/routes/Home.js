@@ -93,7 +93,7 @@ function Home() {
   const currentUser = useAuth();
   const [details, setDetails] = useState([]);
 
-  console.log(details.map((item) => item.imgUrl.slice(12)));
+  // console.log(details.map((item) => item.imgUrl.slice(12)));
   const getData = async () => {
     const cardsCollection = collection(database, currentUser?.email);
     const cardsSnapshot = await getDocs(cardsCollection);
