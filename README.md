@@ -11,3 +11,4 @@ live project: https://glittery-chimera-ced3b0.netlify.app
 ### Figma
 ### AWS POLLY *
 ### Canva
+### Netlify
