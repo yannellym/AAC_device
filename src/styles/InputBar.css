@@ -1,0 +1,36 @@
+.bar {
+  display: flex;
+  width: 90%;
+  height: 8rem;
+  margin: 5% auto;
+  border: 5px solid black;
+}
+
+.input-bar {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  flex: 1;
+}
+
+section{
+  display: flex;
+  width: 10%;
+}
+.bar-btn{
+  background: none;
+  cursor: pointer;
+}
+.deleteDiv{
+  border-right: 5px solid black;
+}
+.deleteBtn{
+  width: 100%;
+}
+.checkDiv{
+  background-color: black;
+}
+.checkBtn{
+  width: 100%;
+  margin-top: 13%;
+}
