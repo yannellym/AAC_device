@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,13 +15,15 @@ const ImageContainer = styled.div`
   }
 `;
 
-function Picture({ picURL, label }) {
+function Picture({ id, picURL, label }) {
   return (
     <ImageContainer>
       <img
         src={picURL}
+        id={id}
         alt="card pic"
         width="150px"
+        onClick={(e) => console.log(e.target.id)}
       />
       {label && <p>{label}</p>}
     </ImageContainer>
