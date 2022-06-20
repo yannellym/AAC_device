@@ -19,7 +19,6 @@ function Home() {
   const currentUser = useAuth();
   const [details, setDetails] = useState([]);
 
-  // console.log(details.map((item) => item.imgUrl.slice(12)));
   const getData = async () => {
     const cardsCollection = collection(database, currentUser?.email);
     const cardsSnapshot = await getDocs(cardsCollection);
@@ -47,11 +46,16 @@ function Home() {
         {details.map((pictureObj) => (
           <Picture
             key={pictureObj.id}
+            id={pictureObj.id}
             picURL={`https://firebasestorage.googleapis.com/v0/b/polly-speech.appspot.com/o/${currentUser.email}%2F${pictureObj.imgUrl.slice(12)}?alt=media`}
             label={pictureObj.label}
           />
         ))}
       </ReactSortable>
+      <div>
+        <img src="https://img.icons8.com/glyph-neue/48/undefined/trash.png" alt="trash icon" />
+        <p>Delete</p>
+      </div>
     </div>
   );
 }
