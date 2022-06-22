@@ -13,13 +13,13 @@ const barOptions = {
 
 function InputBar({ curUser }) {
   const [inputBar, setInputBar] = useState([]);
-
+  console.log(inputBar);
   return (
     <div className="bar">
       <ReactSortable
         className="input-bar"
         list={inputBar}
-        setList={setInputBar}
+        setList={(e) => inputBar.length <= 5 && setInputBar(e)}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...barOptions}
       >
@@ -37,7 +37,7 @@ function InputBar({ curUser }) {
       </section>
       <section className="checkDiv">
         <button type="button">
-          <img src="https://img.icons8.com/color/150/undefined/checked--v1.png" className="bar-btn checkBtn" alt="check button" />
+          <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="check button" />
         </button>
       </section>
     </div>

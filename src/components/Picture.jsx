@@ -4,19 +4,22 @@ import styled from 'styled-components';
 
 const ImageContainer = styled.div`
   display: inline;
-  margin: 0 auto;
+  margin: 2% auto;
+  padding: 6px;
   border-radius: 10px;
   box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.75);
-  padding: 5%;
+  width: 135px;
 
   :hover {
-    border: 1px solid black;
+    border: 1px solid rgb(65, 194, 255);
   }
   p {
     text-align: center;
   }
   img {
-    height: 80%;
+    height: 70px;
+    width: 70px;
+    margin: 0 20%;
   }
 `;
 

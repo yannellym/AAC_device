@@ -109,7 +109,6 @@ const formReducer = (state, event) => {
 function UploadForm() {
   const currentUser = useAuth();
   const dbInstance = collection(database, `${currentUser?.email}`);
-  // const [imageUpload, setImageUpload] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [imageUrls, setImageUrls] = useState([]);
   const [imageUpload, setImageUpload] = useState(null);

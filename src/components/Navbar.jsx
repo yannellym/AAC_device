@@ -6,17 +6,14 @@ import Logo from '../assets/images/logo-opt1.png';
 import { logout } from '../routes/firebaseConfig';
 
 const Nav = styled.div`
-  background: #95DC8385; // rgb(65, 194, 255)
+  background: rgb(65, 194, 255);
   height: 7.5rem;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  .nav--logo {
-    border: 2px solid red;
-  }
-
+  padding-top: 3%;
+  
   .nav--icons {
     display: flex;
     padding-right: 50px;
