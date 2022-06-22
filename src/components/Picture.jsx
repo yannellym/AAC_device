@@ -4,14 +4,22 @@ import styled from 'styled-components';
 
 const ImageContainer = styled.div`
   display: inline;
+  margin: 2% auto;
+  padding: 6px;
+  border-radius: 10px;
+  box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.75);
+  width: 135px;
+
   :hover {
-    border: 1px solid black;
+    border: 1px solid rgb(65, 194, 255);
   }
   p {
     text-align: center;
   }
   img {
-    height: 100%;
+    height: 70px;
+    width: 70px;
+    margin: 0 20%;
   }
 `;
 
@@ -22,8 +30,9 @@ function Picture({ id, picURL, label }) {
         src={picURL}
         id={id}
         alt="card pic"
-        width="150px"
-        onClick={(e) => console.log(e.target.id)}
+        width="120px"
+        onMouseOver={(e) => console.log(e.target.id)}
+        onFocus={() => console.log('focused')}
       />
       {label && <p>{label}</p>}
     </ImageContainer>

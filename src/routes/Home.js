@@ -31,7 +31,6 @@ function Home() {
   useEffect(() => {
     getData();
   }, [currentUser]);
-
   return (
     <div>
       <NavBar />
@@ -52,9 +51,8 @@ function Home() {
           />
         ))}
       </ReactSortable>
-      <div>
+      <div className="deleteContainer">
         <img src="https://img.icons8.com/glyph-neue/48/undefined/trash.png" alt="trash icon" />
-        <p>Delete</p>
       </div>
     </div>
   );
