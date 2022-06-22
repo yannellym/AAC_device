@@ -14,6 +14,12 @@ const barOptions = {
 function InputBar({ curUser }) {
   const [inputBar, setInputBar] = useState([]);
 
+  function removePicture() {
+    if (inputBar.length) {
+      setInputBar((prevState) => [...prevState.slice(0, prevState.length - 1)]);
+    }
+  }
+
   return (
     <div className="bar">
       <ReactSortable
@@ -30,7 +36,7 @@ function InputBar({ curUser }) {
           />
         ))}
       </ReactSortable>
-      <section className="deleteDiv">
+      <section className="deleteDiv" onClick={removePicture}>
         <button type="button">
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
