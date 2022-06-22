@@ -1,8 +1,18 @@
 .container {
-  border: 1px solid green;
   display: grid;
-  width: 80% !important;
+  padding: 1%;
+  width: 95% !important;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 130px);
-  gap: 30px;
+  grid-template-rows: repeat(3, 115px);
+  row-gap: 20px;
+  overflow: auto;
+}
+.deleteContainer > img {
+  height: 40px;
+}
+.deleteContainer{
+  width: 5%;
+  float: right;
+  margin-right: 1%;
+  margin-top: 2%;
 }
