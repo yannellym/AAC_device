@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import '../styles/InputBar.css';
 import { ReactSortable } from 'react-sortablejs';
+import AWS from 'aws-sdk';
 import Picture from './Picture';
+
+const Polly = new AWS.Polly({ region: 'us-east-1' });
+
+const params = {
+  OutputFormat: 'mp3',
+  Engine: 'standard',
+  Text: 'Hello there',
+  TextType: 'text',
+  VoiceId: 'Joanna',
+};
 
 const barOptions = {
   group: {
@@ -18,6 +29,18 @@ function InputBar({ curUser }) {
     if (inputBar.length) {
       setInputBar((prevState) => [...prevState.slice(0, prevState.length - 1)]);
     }
+  }
+
+  function textToSpeech() {
+    Polly.synthesizeSpeech(params, (err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      if (data) {
+        console.log(data);
+      }
+    });
   }
 
   return (
@@ -41,7 +64,7 @@ function InputBar({ curUser }) {
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
       </section>
-      <section className="checkDiv">
+      <section className="checkDiv" onClick={textToSpeech}>
         <button type="button">
           <img src="https://img.icons8.com/color/150/undefined/checked--v1.png" className="bar-btn checkBtn" alt="check button" />
         </button>
