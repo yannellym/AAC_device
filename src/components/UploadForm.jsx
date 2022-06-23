@@ -51,12 +51,11 @@ const FormSection = styled.section`
     padding-left: 5%;
   }
   input[type=file]::file-selector-button{
-    background-color: white;
+    background-color: rgb(128, 198, 255);
     height: 40px;
     width: 40%;
     font-size: 17px;
     display: inline;
-    border: black solid 1px;
     border-radius: 5px;
   }
   button {
@@ -70,11 +69,13 @@ const FormSection = styled.section`
     box-shadow: 0px 1px 2px black;
     cursor: pointer;
     border-radius: 8px;
-    height: 3rem;
-    margin: 5% 25%;
   }
   input[type=file]:valid {
     color: rgb(62,153,69);
+  }
+  .submit-div{
+    max-width: 90%;
+    text-align: center;
   }
 `;
 const formReducer = (state, event) => {
@@ -147,7 +148,7 @@ function UploadForm() {
             required="required"
           />
         </div>
-        <div className="form-group">
+        <div className="form-group submit-div">
           <button type="submit">Upload Photo</button>
         </div>
       </form>
