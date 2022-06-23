@@ -40,9 +40,6 @@ const LoginDiv = styled.div`
     align-items: center;
     box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
   }
-  p > h4{
-    color: black;
-  }
   button{
     margin-top: 3%;
     padding: 8px 10px;
@@ -67,6 +64,10 @@ const LoginDiv = styled.div`
     padding: 15px;
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
+  }
+  .signUp{
+    font-size: 22px;
+    margin-top: -10px;
   }
   h4{
       padding-top: 5%;
@@ -110,9 +111,8 @@ export default function Signup() {
         <LoginDiv>
           <p className="title">Sign Up</p>
           <section className="login-box">
-            <p className="welcome"> Welcome to Polly 😊
-              <h4> Sign up to get started</h4>
-            </p>
+            <p className="welcome"> Welcome to Polly 😊</p>
+            <p className="signUp"> Sign up to get started</p>
             <form>
               <input ref={emailRef} placeholder="Email" autoComplete="email" />
               <input ref={passwordRef} type="password" autoComplete="email" placeholder="Password" />

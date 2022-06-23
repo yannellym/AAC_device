@@ -6,92 +6,76 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useAuth, database, storage, upload } from '../routes/firebaseConfig';
 
 const FormSection = styled.section`
-  width: 50%;
-  height: 50vh;
-  background-color: #c9e8d2;
-  margin: 5% auto;
+  min-width: 45%;
+  height: 40vh;
+  background: rgb(240, 243, 244);
+  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, .4);
   
-    input[type=file]:focus {
-      outline: 2px solid rgba(255,255,255,0.5);
-      outline: -webkit-focus-ring-color auto 5px;
-    }
-    label {
-      font-weight: 500;
-      display: block;
-      margin: 5px 0;
-      padding: 5% 0;
-      text-transform: uppercase;
-      font-size: 13px;
-      overflow: hidden;
-    }
-    .form-controll {
-      display: block;
-      padding: 8px 16px;
-      width: 100%;
-      font-size: 16px;
-      background-color: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: black;
-      font-weight: 200;
+  input[type=file]:focus {
+    outline: 2px solid red;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  label {
+    display: inline;
+    margin: 5px 0;
+    padding: 3% 0;
+    font-size: 18px;
+    font-family: "Palanquin Dark";
+  }
+  .form-group {
+    width: 450px;
+    margin: 2.4rem auto;
+    margin-left: 10%;
+    display: block;
+    line-height: 2;
+  }
+  .form-controll {
+    display: inline;
+    min-width: 50%;
+    font-size: 18px;
+    background-color: #fff;
+    border-radius: 5px;
+    color: black;
+    margin-left: 3%;
       
-      &:focus {
-        outline: 2px solid rgba(255,255,255,0.5);
-        outline: -webkit-focus-ring-color auto 5px;
-      }
+    &:focus {
+      outline: 2px solid red;
     }
-    
-    button {
-      padding: 8px 30px;
-      background: rgba(255,255,255,0.8);
-      color: red;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 11px;
-      border: 0;
-      box-shadow: 0px 1px 2px black;
-      cursor: pointer;
-      border-radius: 8px;
-      height: 40px;
-    }
-    
-    .form-group {
-      max-width: 400px;
-      margin: 2rem auto;
-      margin-bottom: 30px;
-    }
-    
-    .back-to-article {
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 12px;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      text-decoration: none;
-      display: inline-block;
-      background: rgba(0,0,0,0.6);
-      padding: 10px 18px;
-      transition: all 0.3s ease-in-out;
-      opacity: 0.6;
-      
-      &:hover {
-        opacity: 1;
-        background: rgba(0,0,0,0.8);
-      }
-    }
-    input[type=file]:valid {
-      border-color: rgba(0,255,0,0.4);
-      background-color: rgba(0,255,0,0.3);
-  
-      .success {
-        display: inline-block;
-      }
-      .default {
-        display: none;
-      }
-    }
+  }
+  input[type=file]{
+    color: rgb(65, 194, 255);
+    width: 54%;
+    margin-left: 3%;
+    padding-left: 5%;
+  }
+  input[type=file]::file-selector-button{
+    background-color: rgb(128, 198, 255);
+    height: 40px;
+    width: 40%;
+    font-size: 17px;
+    display: inline;
+    border-radius: 5px;
+  }
+  button {
+    padding: 8px 30px;
+    background: rgb(65, 194, 255);
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Palanquin Dark";
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0px 1px 2px black;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  input[type=file]:valid {
+    color: rgb(62,153,69);
+  }
+  .submit-div{
+    max-width: 90%;
+    text-align: center;
   }
 `;
 const formReducer = (state, event) => {
@@ -155,17 +139,16 @@ function UploadForm() {
           />
         </div>
         <div className="form-group file-area">
-          <label htmlFor="imgUrl">Please select Photo: </label>
+          <label htmlFor="imgUrl">Select Photo :</label>
           <input
             type="file"
             name="imgUrl"
             onChange={handleChange}
             value={formData.imgUrl || ''}
             required="required"
-            multiple="multiple"
           />
         </div>
-        <div className="form-group">
+        <div className="form-group submit-div">
           <button type="submit">Upload Photo</button>
         </div>
       </form>
