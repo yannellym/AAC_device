@@ -6,9 +6,9 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useAuth, database, storage, upload } from '../routes/firebaseConfig';
 
 const FormSection = styled.section`
-  width: 45%;
+  min-width: 45%;
   height: 40vh;
-  background: rgb(153, 223, 255);
+  background: rgb(240, 243, 244);
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, .4);
@@ -21,7 +21,8 @@ const FormSection = styled.section`
     display: inline;
     margin: 5px 0;
     padding: 3% 0;
-    font-size: 25px;
+    font-size: 18px;
+    font-family: "Palanquin Dark";
   }
   .form-group {
     width: 450px;
@@ -32,10 +33,9 @@ const FormSection = styled.section`
   }
   .form-controll {
     display: inline;
-    width: 60%;
+    min-width: 50%;
     font-size: 18px;
     background-color: #fff;
-    border: 4px solid rgba(255,255,255,0.3);
     border-radius: 5px;
     color: black;
     margin-left: 3%;
@@ -45,22 +45,23 @@ const FormSection = styled.section`
     }
   }
   input[type=file]{
-    color: red;
+    color: rgb(65, 194, 255);
     width: 54%;
     margin-left: 3%;
     padding-left: 5%;
   }
   input[type=file]::file-selector-button{
+    background-color: white;
     height: 40px;
     width: 40%;
     font-size: 17px;
     display: inline;
-    border: none;
-    box-shadow: 0px 1px 2px black;
+    border: black solid 1px;
+    border-radius: 5px;
   }
   button {
     padding: 8px 30px;
-    background: red;
+    background: rgb(65, 194, 255);
     color: #fff;
     text-transform: uppercase;
     font-family: "Palanquin Dark";
@@ -70,7 +71,7 @@ const FormSection = styled.section`
     cursor: pointer;
     border-radius: 8px;
     height: 3rem;
-    margin: 5% 30%;
+    margin: 5% 25%;
   }
   input[type=file]:valid {
     color: rgb(62,153,69);
