@@ -2,35 +2,35 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import background2 from '../assets/images/background2.png';
+import background3 from '../assets/images/background3.png';
 import { signup, logout, useAuth } from './firebaseConfig';
 import Profile from './Profile';
 
 const LoginDiv = styled.div`
   background-color: #ffaa00;
-  background-image: url("${background2}");
+  background-image: url("${background3}");
   background-attachment: fixed;
   background-size: cover;
   height: 100vh;
   
-  .title{
+  .title {
     font-size: 2.5rem;
-    color: rgb(160,53,34);
+    color: #fff;
     text-align: center;
     padding-top: 4rem;
     width: 15%;
     margin: 0 auto;
-    border-bottom: 3px solid rgb(160,53,34);
+    border-bottom: 3px solid #fff;
   }
-  .welcome{
+  .welcome {
     font-size: 2.2rem;
     padding-top: 5%;
-    color: rgb(160,53,34);
+    color: rgb(37,117,35);
   }
-  .login-box{
+  .login-box {
     margin: 3% auto;
-    min-width: 400px;
-    max-width: 44%;
+    min-width: 450px;
+    max-width: 48%;
     height: 24rem;
     text-align: center;
     background-color: white;
@@ -40,17 +40,18 @@ const LoginDiv = styled.div`
     align-items: center;
     box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
   }
-  .login-box > h1{
-    margin: .5rem;
+  p > h4{
+    color: black;
   }
   button{
-    padding: 10px;
+    margin-top: 3%;
+    padding: 8px 10px;
     border-radius: 10px;
-    color: white;
-    background-color: rgb(160,53,34);
+    color: #fff;
+    background-color: rgb(37,117,35);
     border: none;
     width: 6rem;
-    font-size: .9rem;
+    font-size: 1.3rem;
     box-shadow: 2px 4px 4px -1px rgba(0,0,0,0.75);
   }
   text{
@@ -109,8 +110,9 @@ export default function Signup() {
         <LoginDiv>
           <p className="title">Sign Up</p>
           <section className="login-box">
-            <p className="welcome">Welcome to our Community 😊 </p>
-            <h1>Sign Up to get started!</h1>
+            <p className="welcome"> Welcome to Polly 😊
+              <h4> Sign up to get started</h4>
+            </p>
             <form>
               <input ref={emailRef} placeholder="Email" autoComplete="email" />
               <input ref={passwordRef} type="password" autoComplete="email" placeholder="Password" />
