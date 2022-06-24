@@ -31,6 +31,7 @@ function Home() {
   useEffect(() => {
     getData();
   }, [currentUser]);
+
   return (
     <div>
       <NavBar />
