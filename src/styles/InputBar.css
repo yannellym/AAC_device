@@ -29,9 +29,6 @@ section{
   height: 100%;
   width: 100%;
 }
-.checkDiv > button > img:hover{
-  background-color: rgb(51,255,51);
-}
 .checkBtn{
   padding: 0;
   border: none;
