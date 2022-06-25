@@ -2,9 +2,9 @@
   display: grid;
   padding: 1%;
   row-gap: 20px;
-  background-color: lightblue;
   max-width: 90% !important;
   max-height: 55vh;
+  overflow: scroll;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-template-rows: repeat(5, 115px);
 }
@@ -23,7 +23,12 @@
     width: 100% !important;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 115px);
-    overflow: scroll;
     height: 50vh;
+  }
+}
+
+@media (max-width: 1180px) and (orientation: portrait)  {
+  .container{
+    max-height: 65vh;
   }
 }
