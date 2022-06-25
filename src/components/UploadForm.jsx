@@ -6,8 +6,8 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useAuth, database, storage, upload } from '../routes/firebaseConfig';
 
 const FormSection = styled.section`
-  min-width: 45%;
-  height: 40vh;
+  min-width: 500px;
+  max-height: 35vh;
   background: rgb(240, 243, 244);
   margin: 0 auto;
   border-radius: 10px;
@@ -74,8 +74,8 @@ const FormSection = styled.section`
     color: rgb(62,153,69);
   }
   .submit-div{
-    max-width: 90%;
-    text-align: center;
+    max-width: 50%;
+    margin: 7% auto;
   }
 `;
 const formReducer = (state, event) => {

@@ -16,7 +16,7 @@ const ProfileContainer = styled.div`
 const Header = styled.section`
   display: flex;
   justify-content: space-around;
-  width: 33%;
+  width: 400px;
   margin: 5% auto;
   
   text{

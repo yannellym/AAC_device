@@ -21,8 +21,8 @@ const ProfileDiv = styled.div`
   .photo-section > img{
     justify-content: center;
     align-items: center;
-    width: 70%;
-    height: 80%;
+    min-width: 70%;
+    max-height: 80%;
     border-radius: 50%;
   }
   .save-button{

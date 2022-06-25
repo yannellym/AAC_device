@@ -64,7 +64,7 @@ function InputBar({ curUser }) {
       <ReactSortable
         className="input-bar"
         list={inputBar}
-        setList={(e) => inputBar.length <= 5 && setInputBar(e)}
+        setList={(e) => inputBar.length <= 4 && setInputBar(e)}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...barOptions}
       >
