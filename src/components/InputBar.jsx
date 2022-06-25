@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import '../styles/InputBar.css';
 import { ReactSortable } from 'react-sortablejs';
@@ -5,18 +6,19 @@ import Picture from './Picture';
 
 const SDK = require('microsoft-cognitiveservices-speech-sdk');
 
-const key = process.env.REACT_APP_AZURE_KEY;
-const region = process.env.REACT_APP_AZURE_REGION;
-
 // Text to speech set up
-const speechConfig = SDK.SpeechConfig.fromSubscription(key, region);
+const speechConfig = SDK.SpeechConfig.fromSubscription(process.env.REACT_APP_AZURE_KEY, process.env.REACT_APP_AZURE_REGION);
 
 // Language of the voice
 speechConfig.speechSynthesisVoiceName = 'en-US-JennyNeural';
 
+// Configure the audio output
 const audioConfig = SDK.AudioConfig.fromDefaultSpeakerOutput();
+
+// Create a new instance of the SpeechSynthesizer class and pass configurations
 const synthesizer = new SDK.SpeechSynthesizer(speechConfig, audioConfig);
 
+// Settings that are passed to the input bar for the SortableJS library
 const barOptions = {
   group: {
     name: 'pictures',
@@ -27,14 +29,15 @@ const barOptions = {
 
 function InputBar({ curUser }) {
   const [inputBar, setInputBar] = useState([]);
-  console.log(inputBar);
 
+  // Delete the last picture card that is in the input bar
   function removePicture() {
     if (inputBar.length) {
       setInputBar((prevState) => [...prevState.slice(0, prevState.length - 1)]);
     }
   }
 
+  // Obtain the labels of the cards in the input bar and concatinate the sentence for the text-to-speech
   function getLabelForSpeech() {
     let sentence = '';
     for (let i = 0; i < inputBar.length; i += 1) {
@@ -44,6 +47,7 @@ function InputBar({ curUser }) {
     return sentence;
   }
 
+  // Call the text-to-speech action
   function synthesizeToSpeaker() {
     const outputSentence = getLabelForSpeech();
     synthesizer.speakTextAsync(
@@ -65,7 +69,6 @@ function InputBar({ curUser }) {
         className="input-bar"
         list={inputBar}
         setList={(e) => inputBar.length <= 4 && setInputBar(e)}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...barOptions}
       >
         {inputBar.map((picture) => (
