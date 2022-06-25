@@ -3,8 +3,8 @@
   padding: 1%;
   row-gap: 20px;
   max-width: 90% !important;
-  max-height: 55vh;
-  overflow: scroll;
+  max-height: 50vh;
+  overflow: auto;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-template-rows: repeat(5, 115px);
 }

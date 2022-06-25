@@ -13,6 +13,9 @@ const Nav = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-top: 3%;
+  a:hover{
+    color: white;
+  }
   
   .nav--icons {
     display: flex;
