@@ -1,20 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
-import { ReactSortable } from 'react-sortablejs';
 import { collection, getDocs } from 'firebase/firestore';
 import InputBar from '../components/InputBar';
 import NavBar from '../components/Navbar';
 import { useAuth, database } from './firebaseConfig';
-import Picture from '../components/Picture';
+import DeleteCardPic from '../components/DeleteCardPic';
 import '../styles/Home.css';
+import Gallery from '../components/Gallery';
 
-const gridOptions = {
-  group: {
-    name: 'pictures',
-    pull: 'clone',
-    put: false,
-  },
-  sort: false,
-};
 function Home() {
   const currentUser = useAuth();
   const [details, setDetails] = useState([]);
@@ -36,25 +29,12 @@ function Home() {
     <div>
       <NavBar />
       <InputBar curUser={currentUser} />
-      <ReactSortable
-        className="container"
-        list={details}
-        setList={setDetails}
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...gridOptions}
-      >
-        {details.map((pictureObj) => (
-          <Picture
-            key={pictureObj.id}
-            id={pictureObj.id}
-            picURL={`https://firebasestorage.googleapis.com/v0/b/polly-speech.appspot.com/o/${currentUser.email}%2F${pictureObj.imgUrl.slice(12)}?alt=media`}
-            label={pictureObj.label}
-          />
-        ))}
-      </ReactSortable>
-      <div className="deleteContainer">
-        <img src="https://img.icons8.com/glyph-neue/48/undefined/trash.png" alt="trash icon" />
-      </div>
+      <Gallery
+        details={details}
+        setDetails={setDetails}
+        curUser={currentUser}
+      />
+      <DeleteCardPic />
     </div>
   );
 }
