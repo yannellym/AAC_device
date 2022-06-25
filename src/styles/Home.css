@@ -1,11 +1,12 @@
 .container {
   display: grid;
   padding: 1%;
-  width: 95% !important;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 115px);
   row-gap: 20px;
-  overflow: auto;
+  background-color: lightblue;
+  max-width: 90% !important;
+  max-height: 55vh;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: repeat(5, 115px);
 }
 .deleteContainer > img {
   height: 40px;
@@ -15,4 +16,14 @@
   float: right;
   margin-right: 1%;
   margin-top: 2%;
+}
+
+@media (max-width: 1180px) and (orientation: landscape)  {
+  .container{
+    width: 100% !important;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 115px);
+    overflow: scroll;
+    height: 50vh;
+  }
 }

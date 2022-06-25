@@ -92,29 +92,28 @@ const formReducer = (state, event) => {
 };
 function UploadForm() {
   const currentUser = useAuth();
-  const dbInstance = collection(database, `${currentUser?.email}`);
+  const dbInstance = collection(database, `${currentUser?.email}`); // If there's an user, get the database with the user's email
   // eslint-disable-next-line no-unused-vars
   const [imageUrls, setImageUrls] = useState([]);
   const [imageUpload, setImageUpload] = useState(null);
   const [formData, setFormData] = useReducer(formReducer, {});
 
-  const handleChange = (event) => {
+  const handleChange = (event) => { // Receive all the event data
     setFormData({
       name: event.target.name,
       value: event.target.value,
     });
-    setImageUpload(event.target.files[0]);
-    console.log(event.target.files[0]);
+    setImageUpload(event.target.files[0]); // sets image to first file
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addDoc(dbInstance, formData);
-    const imageRef = ref(storage, `${currentUser.email}/${imageUpload.name}`);
+    addDoc(dbInstance, formData); // adds a document to the document database
+    const imageRef = ref(storage, `${currentUser.email}/${imageUpload.name}`); // references the storage where the user's email and image name are.
     upload(imageUpload, formData.imgUrl);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        setImageUrls((prev) => [...prev, url]);
+      getDownloadURL(snapshot.ref).then((url) => { // Gets the image's upload bites(info) and gets URL.
+        setImageUrls((prev) => [...prev, url]); // sets the image's URL to the URL received.
       });
       console.log(imageUrls);
     })

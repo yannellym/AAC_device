@@ -26,12 +26,18 @@ section{
   border-right: 3px solid black;
 }
 .checkDiv > button > img{
-  max-height: 7rem;
+  height: 100%;
+  width: 100%;
+}
+.checkDiv > button > img:hover{
+  background-color: rgb(51,255,51);
 }
 .checkBtn{
-  width: 100%;
+  padding: 0;
   border: none;
+  background-color: rgb(205, 255, 208);
 }
 button{
   border: none;
+  width: 100%;
 }

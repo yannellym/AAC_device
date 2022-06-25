@@ -8,7 +8,7 @@ const ImageContainer = styled.div`
   padding: 6px;
   border-radius: 10px;
   box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.75);
-  width: 135px;
+  min-width: 135px;
 
   :hover {
     border: 1px solid rgb(65, 194, 255);
@@ -18,7 +18,7 @@ const ImageContainer = styled.div`
   }
   img {
     height: 70px;
-    width: 70px;
+    max-width: 70px;
     margin: 0 20%;
   }
 `;
