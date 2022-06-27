@@ -7,7 +7,7 @@ import { useAuth, database, storage, upload } from '../routes/firebaseConfig';
 
 const FormSection = styled.section`
   min-width: 500px;
-  max-height: 35vh;
+  max-height: 300px;
   background: rgb(240, 243, 244);
   margin: 0 auto;
   border-radius: 10px;
@@ -75,9 +75,18 @@ const FormSection = styled.section`
   }
   .submit-div{
     max-width: 50%;
-    margin: 7% auto;
+    margin: 5% auto;
+  }
+
+  .propmt {
+    width: max-content;
+    margin: 20px auto;
+    font-size: 12px;
+    font-family: "Palanquin Dark";
+    color: rgb(62,153,69);
   }
 `;
+
 const formReducer = (state, event) => {
   if (event.reset) {
     return {
@@ -90,6 +99,7 @@ const formReducer = (state, event) => {
     [event.name]: event.value,
   };
 };
+
 function UploadForm() {
   const currentUser = useAuth();
   const dbInstance = collection(database, `${currentUser?.email}`); // If there's an user, get the database with the user's email
@@ -97,7 +107,8 @@ function UploadForm() {
   const [imageUrls, setImageUrls] = useState([]);
   const [imageUpload, setImageUpload] = useState(null);
   const [formData, setFormData] = useReducer(formReducer, {});
-
+  const [isSuccessful, setIsSuccessful] = useState(false);
+  console.log(isSuccessful);
   const handleChange = (event) => { // Receive all the event data
     setFormData({
       name: event.target.name,
@@ -118,7 +129,8 @@ function UploadForm() {
       console.log(imageUrls);
     })
       .then(() => {
-        console.log('submitted');
+        setIsSuccessful(true);
+        setTimeout(() => window.location.reload(true), 1500);
       })
       .catch((err) => {
         console.log(err);
@@ -149,6 +161,11 @@ function UploadForm() {
         </div>
         <div className="form-group submit-div">
           <button type="submit">Upload Photo</button>
+        </div>
+        <div
+          className="form-group propmt"
+        >
+          {isSuccessful && <p>Picture uploaded successfully</p>}
         </div>
       </form>
     </FormSection>
