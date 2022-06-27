@@ -43,24 +43,15 @@ function InputBar({ curUser }) {
     for (let i = 0; i < inputBar.length; i += 1) {
       sentence += `${inputBar[i].label}, `;
     }
-    console.log(sentence);
     return sentence;
   }
 
   // Call the text-to-speech action
   function synthesizeToSpeaker() {
-    const outputSentence = getLabelForSpeech();
-    synthesizer.speakTextAsync(
-      outputSentence,
-      (result) => {
-        if (result) {
-          console.log(result.audioData);
-        }
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    if (inputBar.length) {
+      const outputSentence = getLabelForSpeech();
+      synthesizer.speakTextAsync(outputSentence);
+    }
   }
 
   return (

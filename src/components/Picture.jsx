@@ -31,8 +31,6 @@ function Picture({ id, picURL, label }) {
         id={id}
         alt="card pic"
         width="120px"
-        onMouseOver={(e) => console.log(e.target.id)}
-        onFocus={() => console.log('focused')}
       />
       {label && <p>{label}</p>}
     </ImageContainer>

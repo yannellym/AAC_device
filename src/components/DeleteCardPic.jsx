@@ -28,6 +28,7 @@ function DeleteCardPic() {
       console.log('no cards to delete');
     }
   };
+
   useEffect(() => {
     deleteSingleCard();
   }, [deleteCardPics]); // runs every time the deleteCardPics is set with a new photo object.
