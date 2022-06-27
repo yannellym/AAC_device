@@ -27,6 +27,8 @@ function Gallery({ details, setDetails, curUser }) {
           id={pictureObj.id}
           picURL={`https://firebasestorage.googleapis.com/v0/b/polly-speech.appspot.com/o/${curUser.email}%2F${pictureObj.imgUrl.slice(12)}?alt=media`}
           label={pictureObj.label}
+          // Fix height of picture cards in Gallery if there's less than 3
+          adjust={details.length < 3}
         />
       ))}
     </ReactSortable>

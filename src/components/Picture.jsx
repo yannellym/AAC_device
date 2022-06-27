@@ -9,7 +9,6 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.75);
   min-width: 115px;
-  min-height: 110px;
   :hover {
     border: 1px solid rgb(65, 194, 255);
   }
@@ -17,15 +16,15 @@ const ImageContainer = styled.div`
     text-align: center;
   }
   img {
-    height: 80px;
+    height: 70px;
     max-width: 70px;
     margin: 0 20%;
   }
 `;
 
-function Picture({ id, picURL, label }) {
+function Picture({ id, picURL, label, adjust }) {
   return (
-    <ImageContainer>
+    <ImageContainer className={adjust ? 'adjust-img' : ''}>
       <img
         src={picURL}
         id={id}

@@ -18,6 +18,10 @@
   margin-top: 2%;
 }
 
+.adjust-img {
+  min-height: 110px;
+}
+
 @media (max-width: 1180px) and (orientation: landscape)  {
   .container{
     width: 100% !important;
