@@ -22,6 +22,8 @@ function DeleteCardPic() {
       // accesses the database and obtains the database for the current user (if there is one).
       // Then, takes the first item's id in the deleteCardPics array, goes to the database,
       // and then deletes the document that matches that ID.
+      // alert('card deleted');
+      setTimeout(() => window.location.reload(true), 600);
     } else {
       console.log('no cards to delete');
     }
