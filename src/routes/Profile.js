@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { useAuth, upload, database } from './firebaseConfig';
+import DefaultProfile from '../assets/images/profilephoto.png';
 import NavBar from '../components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -194,7 +195,7 @@ export default function Profile() {
           </Modal>
         </div>
         <section className="photo-section">
-          <img src={photoURL} alt="profile" />
+          <img src={photoURL || DefaultProfile} alt="profile" />
           <input type="file" onChange={handleChange} />
           <button type="button" className={photo ? 'button' : null} disabled={loading || !photo} onClick={handleClick}>Upload</button>
         </section>
