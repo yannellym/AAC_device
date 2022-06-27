@@ -34,7 +34,7 @@ function Home() {
         setDetails={setDetails}
         curUser={currentUser}
       />
-      <DeleteCardPic />
+      <DeleteCardPic curUser={currentUser} />
     </div>
   );
 }
