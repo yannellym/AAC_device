@@ -28,13 +28,17 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <InputBar curUser={currentUser} />
+      <InputBar
+        curUser={currentUser}
+      />
       <Gallery
         details={details}
         setDetails={setDetails}
         curUser={currentUser}
       />
-      <DeleteCardPic curUser={currentUser} />
+      <DeleteCardPic
+        curUser={currentUser}
+      />
     </div>
   );
 }
