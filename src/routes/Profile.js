@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { useAuth, upload, database } from './firebaseConfig';
 import DefaultProfile from '../assets/images/profilephoto.png';
 import NavBar from '../components/Navbar';
@@ -78,6 +78,7 @@ const formReducer = (state, event) => {
     return {
       name: '',
       age: 0,
+      timeStamp: '',
     };
   }
   return {
@@ -93,9 +94,12 @@ export default function Profile() {
   const [photoURL, setPhotoURL] = useState('https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png');
   const [show, setShow] = useState(false);
   const [informationData, setInformationData] = useReducer(formReducer, {});
-  const dbInstance = collection(database, `info${currentUser?.email}`);
   const [userInformation, setUserInformation] = useState('' || []);
-  const handleClose = () => setShow(false);
+
+  const handleClose = () => {
+    setShow(false);
+    setTimeout(() => window.location.reload(true), 600);
+  };
   const handleShow = () => setShow(true);
 
   function handleChange(e) { // to handle the change when the file button is clicked
@@ -108,29 +112,31 @@ export default function Profile() {
     setInformationData({ // This will set the information data to the information coming from the inputs
       name: event.target.name,
       value: event.target.value,
+      timeStamp: new Date(),
     });
-    console.log(informationData);
   };
 
   function handleClick() {
     upload(photo, currentUser, setLoading); // to upload the photo to the database
   }
 
-  const handleSubmit = (event) => { // handles the information in the modal window form
-    event.preventDefault();
-    addDoc(dbInstance, informationData) // add the data to the onformationData database
-      .then(() => {
-        console.log('submitted');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userCollection = collection(database, `info${currentUser?.email}`);
+    const userSnapshot = await getDocs(userCollection);
+    const userInfo = userSnapshot.docs[0].id;
+    const infoRef = doc(database, `info${currentUser?.email}`, userInfo);
+    await updateDoc(infoRef, {
+      name: informationData.name,
+      age: informationData.age,
+    });
   };
+
   const getData = async () => {
     const informationCollection = collection(database, `info${currentUser?.email}`); // go into the collection
     const informationSnapshot = await getDocs(informationCollection); // get the information from the collection by doing a snapshot
-    const informationInputs = informationSnapshot.docs.map((doc) => ( // map through all of the documents in the collection
-      { ...doc.data(), id: doc.id, // get the document data, and its ID.
+    const informationInputs = informationSnapshot.docs.map((document) => ( // map through all of the documents in the collection
+      { ...document.data(), id: document.id, // get the document data, and its ID.
       }));
     setUserInformation(informationInputs); // Set the user information.
   };
@@ -187,11 +193,6 @@ export default function Profile() {
                 </Button>
               </Form>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
           </Modal>
         </div>
         <section className="photo-section">
