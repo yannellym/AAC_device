@@ -9,7 +9,7 @@ const FormSection = styled.section`
   min-width: 500px;
   max-height: 300px;
   background: rgb(240, 243, 244);
-  margin: 0 auto;
+  margin: -2rem auto;
   border-radius: 10px;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, .4);
   

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const ImageContainer = styled.div`
   display: inline;
-  margin: 2% auto;
+  margin: 1% auto;
   padding: 6px;
   border-radius: 10px;
   box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.75);
