@@ -8,7 +8,7 @@ live project: https://glittery-chimera-ced3b0.netlify.app
 ### ESLint
 ### FontSource
 ### Figma
-### AWS POLLY *
+### Azure Text to Speech
 ### Canva
 ### Netlify
-### Sortablle JS
+### Sortable JS
