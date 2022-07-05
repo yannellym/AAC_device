@@ -8,22 +8,22 @@ Project Demo:  <br/>
 # Overview
 
 ### Table of Contents
-0. Technologies Used (#Technologies)
+0. [Technologies Used](#Technologies)
 1. [Overview](#Overview)
 2. [Product Spec](#Product-Spec)
 3. [Wireframes](#Wireframes)
 
 ### Technologies Used: 
-Styled Components <br/>
-React Bootstrap <br/>
-Firebase <br/>
-ESLint <br/>
-FontSource <br/>
-Figma <br/>
-Azure Text to Speech <br/>
-Canva <br/>
-Netlify <br/>
-Sortable JS <br/>
+ 1. Styled Components <br/>
+ 2. React Bootstrap <br/>
+ 3. Firebase <br/>
+ 4. ESLint <br/>
+ 5. FontSource <br/>
+ 6. Figma <br/>
+ 7. Azure Text to Speech <br/>
+ 8. Canva <br/>
+ 9. Netlify <br/>
+10. Sortable JS <br/>
 
 
 ### Description
