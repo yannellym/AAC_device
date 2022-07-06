@@ -1,11 +1,14 @@
 # Polly: An augmentative and alternative communication (AAC) device.
 
+## Live project: https://glittery-chimera-ced3b0.netlify.app <br/>
+
 <img src="https://media.giphy.com/media/f7N2ALyBNS5FXJHpFR/giphy.gif" alt="Polly" height="100%" /> <br/>
-live project: https://glittery-chimera-ced3b0.netlify.app <br/>
+<img src="https://media.giphy.com/media/KSajV8BnzjUagOhsSd/giphy.gif" alt="Polly" height="100%" /> <br/>
+
 
 # Overview
 
-### Table of Contents
+## Table of Contents
 0. [Technologies Used](#Technologies)
 1. [Overview](#Overview)
 2. [Product Spec](#Product-Spec)
@@ -25,7 +28,11 @@ live project: https://glittery-chimera-ced3b0.netlify.app <br/>
 
 
 ### Description
-Polly is an augmentative and alternative communication (AAC) device for individuals that cannot communicate verbally. It is specially designed for young children. This app was inspired by my nephew, Liam. He is on the autism spectrum and is non-verbal. With this app, Liam will be able to communicate his needs. He will be able to drag a photo or multiple ones, and have them read out loud. His parents will also be able to upload new photos to the database and add them so Liam will have more photos to select from. They will also be able to edit the profile section in order to show Liam's age, name and photo. 
+Polly is an augmentative and alternative communication (AAC) device for individuals that cannot communicate verbally. An augmentative and alternative communication (AAC) device, is a tablet or laptop that helps someone with a speech or language impairment to communicate. The term AAC device is often used interchangeably with terms like speech-generating device (SGD) or assistive communication device or simply communication device. AAC devices help users to communicate through a combination of words, sentences, and images that the device then “says out loud.” Polly is specially designed for young children. This app was inspired by my nephew, Liam. Liam is currently 4 years old and is on the autism spectrum. He is non-verbal and cannot physically communicate. With this app, Liam will be able to communicate his needs. He will be able to drag a photo or multiple ones, and have them read out loud. His parents will also be able to upload new photos to the database and add them so Liam will have more photos to select from. They will also be able to edit the profile section in order to show Liam's age, name and photo. 
+
+### Information on AAC Devices: https://www.aphasia.com/aac-devices/what-is-an-aac-device/ <br/>
+### Information on Austim: https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd#:~:text=Autism%20spectrum%20disorder%20(ASD)%20is,first%20two%20years%20of%20life.<br/>
+
 
 ### App Evaluation
 - **Category:** Technology/ Assistive Technology
