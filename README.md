@@ -33,6 +33,11 @@ Polly is an augmentative and alternative communication (AAC) device for individu
 ### Information on AAC Devices: https://www.aphasia.com/aac-devices/what-is-an-aac-device/ <br/>
 ### Information on Austim: https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd#:~:text=Autism%20spectrum%20disorder%20(ASD)%20is,first%20two%20years%20of%20life.<br/>
 
+### Lesson Learned
+After hacing created this project, I learned how to use AWS Polly, and Azure text-to-speech. I also practiced using firebase and reading through all of the functions they have available. I really enjoyed designing the wireframes for the project. I also enjoyed doing research on people with Austim and how to design to their needs. The most difficult part was working with Azure for the first time. Azure had some difficulties working across browsers. Lastly, Sortable JS was also a bit difficult at times. However, I was able to figure it out after reading the documentation and doing trials. 
+
+### Roles:
+This project was developed by two people: Luis Brito, and Yannelly Mercado(Myself). Both developers were involved in the design, development, and testing of the project. 
 
 ### App Evaluation
 - **Category:** Technology/ Assistive Technology
@@ -47,55 +52,43 @@ Polly is an augmentative and alternative communication (AAC) device for individu
 
 **Required Must-have Stories**
 
-* User logs in to access the MarketPlace.
-* User searches recyclables by location or browses through the feed (think Indeed).
-* Claimed Batches have a page dedicated to them where you can unclaim if needed.
-* Liked Batches have a page dedicated to them where you can unlike if needed.
-* Profile pages for each user
+* User logs in to the Polly App or creates an account if user doesn't have one.
+* User can drag and drop an image to the input bar and have it read out loud. 
+* User can delete one or multiple images from input bar.
+* User can delete a card by dragging it and dropping it on the trash icon.
+* User can click on the speaker icon in order to have all cards/images to have it read. 
+* User can upload an image along with its label and have it displayed on the home page.
+* User can upload a new profile image and change the user information. 
 
-**Optional Nice-to-have Stories**
+**Additional features I would like to add:**
 
-* More information about each user
-* How many batches they have claimed thus far
-* Community forum to interact with other users
-* Badges/levels to reward users
+* Have the app be available on the app store and as a mobile app. 
+* Include a confirmation view window for the delete card option.
+* Include a caroussel for the photo section. 
+* Allow the user to sign in with a Google account.
 
 ### 2. Screen Archetypes
 
-* Login 
-* Register - User signs up or logs into their account
-   * Upon Download/Reopening of the application, the user is prompted to log in to gain access to their profile information to access the MarketPlace.
-* MarketPlace - User is able to browse through the marketplace of recyclables. 
-   * They can search by lcoation, claimed, and liked.
-* Profile Screen 
-   * Allows user to upload a photo of themselves.
-* Liked Screen.
-   * Allows user to see what batches they have liked.
-* Claimed Screen.
-   * Allows user to see what batches they have claimed.
-* Upload Screen.
-   * Allows user to upload batches of their own.
+* Login -> Users can log in if they have an account. 
+* Sign Up -> Users can create an account if they do not have one yet.
+* Home -> Users can browse through the photos, drag the photos to the input bar, and have it read by the speaker. 
+* Upload -> Allows users to label photos and upload them to the database. 
+* Profile -> Allows users to upload a new image and edit their information. 
 
 
 ### 3. Navigation
 
 **Tab Navigation** 
-
+* Log in/ Sign up
 * Home
-* MarketFeed
-* Liked Batches
-* Claimed Batches
-* Upload Batch
+* Upload
 * Profile
 
-
 **Flow Navigation** (Screen to Screen)
-* Log-in /Sign up -> Account creation if no log in is available
-* MarketFeed -> Jumps to all available batches
-* Liked batches -> batches that have been liked
-* Claimed batches -> batches that have been claimed
-* Upload batches -> option to upload batch
-* * Profile -> Profile photo to be uploaded 
+* Log-in /Sign up -> Logs the user in and takes it to home. If there's no account, lets user create an account. 
+* Home -> Takes user to the home page that includes all user cards(vocabulary).
+* Upload -> Upload a photo, along with a label, to the home page.
+* Profile -> Upload a new user photo, and edit the user information. 
 
 ## Wireframes
 ![Screen Shot 2022-07-05 at 4 47 40 PM](https://user-images.githubusercontent.com/91508647/177413686-01c4b5ce-773d-4e47-ae26-6a2e3ca53f8f.png)
