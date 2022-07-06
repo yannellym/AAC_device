@@ -1,9 +1,7 @@
-live project: https://glittery-chimera-ced3b0.netlify.app
-
 # Polly: An augmentative and alternative communication (AAC) device.
 
-<img src="https://" alt="Polly" height="100%" /> <br/>
-Project Demo:  <br/>
+<img src="https://media.giphy.com/media/f7N2ALyBNS5FXJHpFR/giphy.gif" alt="Polly" height="100%" /> <br/>
+live project: https://glittery-chimera-ced3b0.netlify.app <br/>
 
 # Overview
 
@@ -109,7 +107,6 @@ Live Prototype: [https://www.figma.com/proto/a7CQwAY8frhAVek2wA3bfh/Polly?node-i
 ### Interactive Prototype
 <img src="https://media.giphy.com/media/6YXHxBrBEljnlAYbtS/giphy.gif" width=500>
 
-
-
 ### Design Systems
-![Screen Shot 2022-04-20 at 5 38 30 PM](https://user-images.githubusercontent.com/91508647/164327263-886cbd35-1736-469f-8760-c4ae5d4e12e9.png)
+![Screen Shot 2022-07-06 at 3 01 34 PM](https://user-images.githubusercontent.com/91508647/177623662-72209243-3514-4a2f-80e3-ce372e9c9e44.png)
+
