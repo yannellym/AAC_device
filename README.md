@@ -99,15 +99,15 @@ Polly is an augmentative and alternative communication (AAC) device for individu
 
 
 ## Figma prototype: </br>
-Live Prototype: https://www.figma.com/proto/a7CQwAY8frhAVek2wA3bfh/Polly?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2
+Live Prototype: [https://www.figma.com/proto/a7CQwAY8frhAVek2wA3bfh/Polly?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2](https://www.figma.com/proto/a7CQwAY8frhAVek2wA3bfh/Polly?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2)
 
 
 ### Digital Wireframes & Mockups
-<i![Screen Shot 2022-04-20 at 5 36 27 PM](https://user-images.githubusercontent.com/91508647/164327156-af12cec2-ea17-4f51-9698-1aa40bcf6243.png)
 
+![Screen Shot 2022-07-06 at 2 45 30 PM](https://user-images.githubusercontent.com/91508647/177621105-8f513744-77c3-4dcf-994f-846a01d90c99.png)
 
 ### Interactive Prototype
-<img src="https://media.giphy.com/media/hfK3Zy5mwFj5SMW58o/giphy.gif" width=200>
+<img src="https://media.giphy.com/media/6YXHxBrBEljnlAYbtS/giphy.gif" width=500>
 
 
 
