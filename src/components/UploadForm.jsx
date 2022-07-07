@@ -133,7 +133,8 @@ function UploadForm() {
     })
       .then(() => {
         setIsSuccessful(true);
-        setTimeout(() => window.location.reload(true), 1500);
+        // eslint-disable-next-line no-return-assign
+        setTimeout(() => window.location = '/home', 1200);
       })
       .catch((err) => {
         console.log(err);
@@ -150,6 +151,7 @@ function UploadForm() {
             value={formData.label || ''}
             onChange={handleChange}
             className="form-controll"
+            required
           />
         </div>
         <div className="form-group file-area">
@@ -159,7 +161,7 @@ function UploadForm() {
             name="imgUrl"
             onChange={handleChange}
             value={formData.imgUrl || ''}
-            required="required"
+            required
           />
           <button type="submit">Upload Photo</button>
         </div>
