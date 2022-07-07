@@ -58,6 +58,12 @@ const FormSection = styled.section`
     display: inline;
     border-radius: 5px;
   }
+  .submit-div{
+    outline: red solid 2px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+  }
   button {
     padding: 8px 30px;
     background: rgb(65, 194, 255);
@@ -69,15 +75,12 @@ const FormSection = styled.section`
     box-shadow: 0px 1px 2px black;
     cursor: pointer;
     border-radius: 8px;
+    margin-top: 5%;
+    width: 90%;
   }
   input[type=file]:valid {
     color: rgb(62,153,69);
   }
-  .submit-div{
-    max-width: 50%;
-    margin: 5% auto;
-  }
-
   .propmt {
     width: max-content;
     margin: 20px auto;
@@ -158,8 +161,6 @@ function UploadForm() {
             value={formData.imgUrl || ''}
             required="required"
           />
-        </div>
-        <div className="form-group submit-div">
           <button type="submit">Upload Photo</button>
         </div>
         <div
