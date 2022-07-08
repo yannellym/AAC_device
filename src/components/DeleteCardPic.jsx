@@ -27,7 +27,7 @@ function DeleteCardPic() {
       // and then deletes the document that matches that ID.
       // alert('card deleted');
       // eslint-disable-next-line no-return-assign
-      setTimeout(() => window.location = '/home', 1500);
+      setTimeout(() => window.location = '/', 1500);
     } else {
       console.log('no cards to delete');
     }
