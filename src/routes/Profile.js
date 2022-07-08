@@ -99,7 +99,6 @@ export default function Profile() {
 
   const handleClose = () => {
     setShow(false);
-    setTimeout(() => window.location = 'profile', 900);
   };
   const handleShow = () => setShow(true);
 
