@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 import React, { useEffect, useState, useReducer } from 'react';
 import styled from 'styled-components';
@@ -6,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import { useAuth, upload, database } from './firebaseConfig';
 import DefaultProfile from '../assets/images/profilephoto.png';
 import NavBar from '../components/Navbar';
@@ -96,10 +96,11 @@ export default function Profile() {
   const [show, setShow] = useState(false);
   const [informationData, setInformationData] = useReducer(formReducer, {});
   const [userInformation, setUserInformation] = useState('' || []);
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setShow(false);
-    setTimeout(() => window.location = '/profile', 600);
+    setTimeout(() => navigate('/profile', { replace: true }), 600);
   };
   const handleShow = () => setShow(true);
 
