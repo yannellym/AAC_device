@@ -131,7 +131,7 @@ export default function Profile() {
       age: informationData.age,
     });
     // eslint-disable-next-line no-self-assign
-    window.location.href = window.location.href;
+    window.location.href = 'https://main--glittery-chimera-ced3b0.netlify.app/profile';
   };
 
   const getData = async () => {
