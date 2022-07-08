@@ -51,7 +51,6 @@ function InputBar({ curUser }) {
     if (inputBar.length) {
       const outputSentence = getLabelForSpeech();
       synthesizer.speakTextAsync(outputSentence);
-      console.log(outputSentence);
     }
   }
 
