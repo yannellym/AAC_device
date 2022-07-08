@@ -130,7 +130,7 @@ export default function Profile() {
       name: informationData.name,
       age: informationData.age,
     });
-    window.location.reload();
+    setTimeout(() => window.location = '/', 600);
   };
 
   const getData = async () => {
