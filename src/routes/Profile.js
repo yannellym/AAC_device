@@ -97,8 +97,10 @@ export default function Profile() {
   const [informationData, setInformationData] = useReducer(formReducer, {});
   const [userInformation, setUserInformation] = useState('' || []);
 
+  console.log(window.location);
   const handleClose = () => {
     setShow(false);
+    window.location.reload();
   };
   const handleShow = () => setShow(true);
 
@@ -130,7 +132,6 @@ export default function Profile() {
       name: informationData.name,
       age: informationData.age,
     });
-    window.location.reload();
   };
 
   const getData = async () => {
