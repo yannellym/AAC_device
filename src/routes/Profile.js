@@ -130,7 +130,8 @@ export default function Profile() {
       name: informationData.name,
       age: informationData.age,
     });
-    setTimeout(() => window.location = '/', 600);
+    // eslint-disable-next-line no-self-assign
+    window.location.href = window.location.href;
   };
 
   const getData = async () => {
