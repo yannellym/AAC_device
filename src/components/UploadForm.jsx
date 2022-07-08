@@ -83,7 +83,8 @@ const FormSection = styled.section`
   }
   .propmt {
     width: max-content;
-    margin: 20px auto;
+    margin: 10px auto;
+    text-align: center;
     font-size: 12px;
     font-family: "Palanquin Dark";
     color: rgb(62,153,69);
@@ -111,7 +112,7 @@ function UploadForm() {
   const [imageUpload, setImageUpload] = useState(null);
   const [formData, setFormData] = useReducer(formReducer, {});
   const [isSuccessful, setIsSuccessful] = useState(false);
-  console.log(isSuccessful);
+
   const handleChange = (event) => { // Receive all the event data
     setFormData({
       name: event.target.name,
@@ -168,7 +169,7 @@ function UploadForm() {
         <div
           className="form-group propmt"
         >
-          {isSuccessful && <p>Picture uploaded successfully</p>}
+          {isSuccessful && <p>Picture uploaded successfully!</p>}
         </div>
       </form>
     </FormSection>
