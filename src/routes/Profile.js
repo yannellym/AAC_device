@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 import React, { useEffect, useState, useReducer } from 'react';
 import styled from 'styled-components';
