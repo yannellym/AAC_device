@@ -5,7 +5,6 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
 import { useAuth, upload, database } from './firebaseConfig';
 import DefaultProfile from '../assets/images/profilephoto.png';
 import NavBar from '../components/Navbar';
@@ -96,11 +95,10 @@ export default function Profile() {
   const [show, setShow] = useState(false);
   const [informationData, setInformationData] = useReducer(formReducer, {});
   const [userInformation, setUserInformation] = useState('' || []);
-  const navigate = useNavigate();
 
   const handleClose = () => {
     setShow(false);
-    setTimeout(() => navigate('/profile', { replace: true }), 600);
+    setTimeout(() => window.location = '/profile', 900);
   };
   const handleShow = () => setShow(true);
 
