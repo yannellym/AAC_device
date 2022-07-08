@@ -133,7 +133,7 @@ export default function Profile() {
       age: informationData.age,
     });
     // eslint-disable-next-line no-self-assign
-    navigate('/profile');
+    navigate('/profile', { replace: true });
   };
 
   const getData = async () => {
