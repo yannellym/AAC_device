@@ -3,6 +3,7 @@ import React, { useState, useReducer } from 'react';
 import styled from 'styled-components';
 import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 import { useAuth, database, storage, upload } from '../routes/firebaseConfig';
 
 const FormSection = styled.section`
@@ -112,6 +113,7 @@ function UploadForm() {
   const [imageUpload, setImageUpload] = useState(null);
   const [formData, setFormData] = useReducer(formReducer, {});
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (event) => { // Receive all the event data
     setFormData({
@@ -135,7 +137,7 @@ function UploadForm() {
       .then(() => {
         setIsSuccessful(true);
         // eslint-disable-next-line no-return-assign
-        setTimeout(() => window.location = '/', 1200);
+        setTimeout(() => navigate('/home', { replace: true }), 800);
       })
       .catch((err) => {
         console.log(err);
