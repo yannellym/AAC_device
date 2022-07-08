@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 import React, { useEffect, useState, useReducer } from 'react';
 import styled from 'styled-components';
@@ -98,7 +99,7 @@ export default function Profile() {
 
   const handleClose = () => {
     setShow(false);
-    setTimeout(() => window.location.reload(true), 600);
+    setTimeout(() => window.location = '/profile', 600);
   };
   const handleShow = () => setShow(true);
 
