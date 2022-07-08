@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { doc, deleteDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import { useAuth, database } from '../routes/firebaseConfig';
 
 const deleteOptions = {
@@ -15,6 +16,7 @@ const deleteOptions = {
 function DeleteCardPic() {
   const currentUser = useAuth();
   const [deleteCardPics, setDeleteCardPics] = useState([]);
+  const navigate = useNavigate();
 
   const deleteSingleCard = () => {
     if (deleteCardPics.length) {
@@ -24,7 +26,7 @@ function DeleteCardPic() {
       // and then deletes the document that matches that ID.
       // alert('card deleted');
       // eslint-disable-next-line no-return-assign
-      setTimeout(() => window.location = '/', 600);
+      setTimeout(() => navigate('/home', { replace: true }), 800);
     } else {
       console.log('no cards to delete');
     }
