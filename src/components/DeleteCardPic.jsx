@@ -23,7 +23,8 @@ function DeleteCardPic() {
       // Then, takes the first item's id in the deleteCardPics array, goes to the database,
       // and then deletes the document that matches that ID.
       // alert('card deleted');
-      setTimeout(() => window.location.reload(true), 600);
+      // eslint-disable-next-line no-return-assign
+      setTimeout(() => window.location = '/', 600);
     } else {
       console.log('no cards to delete');
     }
