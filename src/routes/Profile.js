@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router-dom';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { useAuth, upload, database } from './firebaseConfig';
 import DefaultProfile from '../assets/images/profilephoto.png';
@@ -96,11 +97,10 @@ export default function Profile() {
   const [show, setShow] = useState(false);
   const [informationData, setInformationData] = useReducer(formReducer, {});
   const [userInformation, setUserInformation] = useState('' || []);
+  const history = useHistory();
 
-  console.log(window.location);
   const handleClose = () => {
     setShow(false);
-    window.location.reload();
   };
   const handleShow = () => setShow(true);
 
@@ -132,6 +132,7 @@ export default function Profile() {
       name: informationData.name,
       age: informationData.age,
     });
+    history.push('/profile');
   };
 
   const getData = async () => {
