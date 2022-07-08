@@ -135,7 +135,7 @@ function UploadForm() {
       .then(() => {
         setIsSuccessful(true);
         // eslint-disable-next-line no-return-assign
-        setTimeout(() => window.location = '/', 1200);
+        setTimeout(() => window.location = '/home', 1200);
       })
       .catch((err) => {
         console.log(err);
