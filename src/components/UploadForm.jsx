@@ -132,7 +132,6 @@ function UploadForm() {
       getDownloadURL(snapshot.ref).then((url) => { // Gets the image's upload bites(info) and gets URL.
         setImageUrls((prev) => [...prev, url]); // sets the image's URL to the URL received.
       });
-      console.log(imageUrls);
     })
       .then(() => {
         setIsSuccessful(true);
