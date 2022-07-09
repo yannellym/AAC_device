@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import { useEffect, useState } from 'react';
 import uuid from 'react-uuid';
 // Import the functions you need from the SDKs you need
@@ -59,6 +60,5 @@ export async function upload(file, currentUser, setLoading) {
   updateProfile(currentUser, { photoURL });
 
   setLoading(false);
-  // eslint-disable-next-line no-alert
-  // alert('Uploaded file!');
+  setTimeout(() => window.location = '/profile', 900); // reroute to the profile page after 600s
 }
