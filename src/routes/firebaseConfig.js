@@ -60,5 +60,5 @@ export async function upload(file, currentUser, setLoading) {
 
   setLoading(false);
   // eslint-disable-next-line no-alert
-  alert('Uploaded file!');
+  // alert('Uploaded file!');
 }

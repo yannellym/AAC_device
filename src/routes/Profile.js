@@ -118,7 +118,7 @@ export default function Profile() {
 
   function handleClick() {
     upload(photo, currentUser, setLoading); // to upload the photo to the database
-    setTimeout(() => window.location = '/profile', 800); // reroute to the profile page after 600s
+    setTimeout(() => window.location = '/profile', 900); // reroute to the profile page after 600s
   }
 
   const handleSubmit = async (e) => {
