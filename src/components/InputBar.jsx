@@ -75,7 +75,7 @@ function InputBar({ curUser }) {
         </button>
       </section>
       <section className="checkDiv">
-        <button type="button" onMouseDown={synthesizeToSpeaker}>
+        <button type="button" onClick={synthesizeToSpeaker}>
           <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
         </button>
       </section>
