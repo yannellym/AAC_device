@@ -56,7 +56,7 @@ function InputBar({ curUser }) {
   }
 
   return (
-    <div className="bar">
+    <div className="bar" onClick={(e) => e.preventDefault()}>
       <ReactSortable
         className="input-bar"
         list={inputBar}
@@ -75,7 +75,7 @@ function InputBar({ curUser }) {
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
       </section>
-      <button type="button" onClick={synthesizeToSpeaker} className="checkDiv">
+      <button type="button" onClick={synthesizeToSpeaker} onTouchStart={synthesizeToSpeaker} className="checkDiv">
         <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
       </button>
     </div>
