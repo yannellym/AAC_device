@@ -28,10 +28,11 @@ section{
 .checkDiv > button > img{
   height: 100%;
   width: 100%;
-  outline: red solid 2px;
+  cursor: pointer;
 }
-.checkDiv > img:hover{
+.checkDiv > button > img:hover{
   background-color: rgb(205, 255, 208);
+  cursor: pointer;
 }
 .checkBtn{
   padding: 0;

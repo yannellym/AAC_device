@@ -1,9 +1,7 @@
-/* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import '../styles/InputBar.css';
 import { ReactSortable } from 'react-sortablejs';
-import Tappable from 'react-tappable';
 import Picture from './Picture';
 
 const SDK = require('microsoft-cognitiveservices-speech-sdk');
@@ -76,9 +74,11 @@ function InputBar({ curUser }) {
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
       </section>
-      <Tappable onTap={synthesizeToSpeaker} className="checkDiv">
-        <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
-      </Tappable>
+      <section className="checkDiv">
+        <button type="button" onClick={synthesizeToSpeaker} onTouchStart={synthesizeToSpeaker}>
+          <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
+        </button>
+      </section>
     </div>
   );
 }
