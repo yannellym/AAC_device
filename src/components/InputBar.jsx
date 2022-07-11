@@ -75,7 +75,7 @@ function InputBar({ curUser }) {
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
       </section>
-      <section className="checkDiv" onClick={synthesizeToSpeaker}>
+      <section className="checkDiv" onTouchStart={synthesizeToSpeaker}>
         <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
       </section>
       <button type="button" className="checkDiv" onClick={synthesizeToSpeaker}>
