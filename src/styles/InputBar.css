@@ -28,6 +28,7 @@ section{
 .checkDiv{
   min-width: 120px;
   max-width: 14%;
+  cursor: pointer;
 }
 .checkDiv > img{
   height: 100%;
