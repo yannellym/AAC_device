@@ -76,7 +76,7 @@ function InputBar({ curUser }) {
         </button>
       </section>
       <form onSubmit={synthesizeToSpeaker}>
-        <button type="submit" className="checkDiv">
+        <button type="submit" className="checkDiv" onTap={synthesizeToSpeaker}>
           <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
         </button>
       </form>

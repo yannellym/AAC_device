@@ -38,10 +38,10 @@ form{
   width: 100%;
   cursor: pointer;
 }
-.checkDiv:hover{
+/* .checkDiv:hover{
   background-color: rgb(205, 255, 208);
   cursor: pointer;
-}
+} */
 button{
   border: none;
   width: 100%;
