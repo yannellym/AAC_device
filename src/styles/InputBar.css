@@ -36,7 +36,6 @@ form{
 .checkDiv > img{
   height: 100%;
   width: 100%;
-  cursor: pointer;
 }
 .checkDiv:hover{
   background-color: rgb(205, 255, 208);

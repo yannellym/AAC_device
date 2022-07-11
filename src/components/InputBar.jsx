@@ -1,6 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import '../styles/InputBar.css';
@@ -52,7 +49,6 @@ function InputBar({ curUser }) {
   // Call the text-to-speech action
   function synthesizeToSpeaker(e) {
     e.preventDefault();
-    alert('working');
     if (inputBar.length) {
       const outputSentence = getLabelForSpeech();
       synthesizer.speakTextAsync(outputSentence);
@@ -78,6 +74,9 @@ function InputBar({ curUser }) {
         <button type="button">
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
+      </section>
+      <section className="checkDiv" onClick={synthesizeToSpeaker}>
+        <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
       </section>
       <button type="button" className="checkDiv" onClick={synthesizeToSpeaker}>
         <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
