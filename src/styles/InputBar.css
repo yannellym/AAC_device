@@ -28,8 +28,9 @@ section{
 .checkDiv > button > img{
   height: 100%;
   width: 100%;
+  outline: red solid 2px;
 }
-.checkDiv > button > img:hover{
+.checkDiv > img:hover{
   background-color: rgb(205, 255, 208);
 }
 .checkBtn{
