@@ -25,6 +25,9 @@ section{
   width: 100%;
   border-right: 3px solid black;
 }
+form{
+  cursor: pointer;
+}
 .checkDiv{
   min-width: 120px;
   max-width: 14%;
@@ -33,6 +36,7 @@ section{
 .checkDiv > img{
   height: 100%;
   width: 100%;
+  cursor: pointer;
 }
 .checkDiv:hover{
   background-color: rgb(205, 255, 208);
