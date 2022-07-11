@@ -31,9 +31,9 @@ section{
 }
 .checkDiv > img{
   height: 100%;
-  width: 90%;
+  width: 100%;
 }
-.checkDiv > button > img:hover{
+.checkDiv > img:hover{
   background-color: rgb(205, 255, 208);
 }
 button{
