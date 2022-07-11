@@ -25,18 +25,16 @@ section{
   width: 100%;
   border-right: 3px solid black;
 }
-.checkDiv > button > img{
+.checkDiv{
+  min-width: 120px;
+  max-width: 14%;
+}
+.checkDiv > img{
   height: 100%;
-  width: 100%;
-  cursor: pointer;
+  width: 90%;
 }
 .checkDiv > button > img:hover{
   background-color: rgb(205, 255, 208);
-  cursor: pointer;
-}
-.checkBtn{
-  padding: 0;
-  border: none;
 }
 button{
   border: none;
