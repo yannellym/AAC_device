@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        cursor: pointer;
     }
     body{
         font-family: "Darker Grotesque", "Palanquin Dark", sans-serif;
