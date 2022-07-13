@@ -26,6 +26,7 @@
  8. Canva <br/>
  9. Netlify <br/>
 10. Sortable JS <br/>
+11. Speech Synthesis <br/>
 
 
 ### Description
