@@ -1,6 +1,6 @@
 # Polly: An augmentative and alternative communication (AAC) device.
 
-## Live project: https://glittery-chimera-ced3b0.netlify.app <br/>
+## Live project: https://originalpollyapp.netlify.app <br/>
 ## Live project USING AZURE: azurepollyapp.netlify.app <br/>
 
 <img src="https://media.giphy.com/media/8VNS16lrTj0PQMMFgt/giphy.gif" alt="Polly" />
