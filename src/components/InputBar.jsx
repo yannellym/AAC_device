@@ -41,9 +41,9 @@ function InputBar({ curUser }) {
     }
   }
 
-  navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+  navigator.mediaDevices.getUserMedia({ audio: true })
     .then((stream) => {
-      if (stream.getVideoTracks().length > 0 && stream.getAudioTracks().length > 0) {
+      if (stream.getAudioTracks().length > 0) {
         // code for when none of the devices are available
       } else {
         // code for when both devices are available
