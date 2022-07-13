@@ -41,6 +41,20 @@ function InputBar({ curUser }) {
     }
   }
 
+  navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+    .then((stream) => {
+      if (stream.getVideoTracks().length > 0 && stream.getAudioTracks().length > 0) {
+        // code for when none of the devices are available
+      } else {
+        // code for when both devices are available
+        console.log('available');
+      }
+    })
+    .catch((error) => {
+      // code for when there is an error
+      console.log(error);
+    });
+
   return (
     <div className="bar">
       <ReactSortable
