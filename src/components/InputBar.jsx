@@ -4,20 +4,6 @@ import '../styles/InputBar.css';
 import { ReactSortable } from 'react-sortablejs';
 import Picture from './Picture';
 
-const SDK = require('microsoft-cognitiveservices-speech-sdk');
-
-// Text to speech set up
-const speechConfig = SDK.SpeechConfig.fromSubscription(process.env.REACT_APP_AZURE_KEY, process.env.REACT_APP_AZURE_REGION);
-
-// Language of the voice
-speechConfig.speechSynthesisVoiceName = 'en-US-JennyNeural';
-
-// Configure the audio output
-const audioConfig = SDK.AudioConfig.fromDefaultSpeakerOutput();
-
-// Create a new instance of the SpeechSynthesizer class and pass configurations
-const synthesizer = new SDK.SpeechSynthesizer(speechConfig, audioConfig);
-
 // Settings that are passed to the input bar for the SortableJS library
 const barOptions = {
   group: {
@@ -50,10 +36,24 @@ function InputBar({ curUser }) {
   function synthesizeToSpeaker(e) {
     e.preventDefault();
     if (inputBar.length) {
-      const outputSentence = getLabelForSpeech();
-      synthesizer.speakTextAsync(outputSentence);
+      const utterance = new SpeechSynthesisUtterance(getLabelForSpeech());
+      speechSynthesis.speak(utterance);
     }
   }
+
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then((stream) => {
+      if (stream.getAudioTracks().length > 0) {
+        // code for when none of the devices are available
+      } else {
+        // code for when both devices are available
+        console.log('available');
+      }
+    })
+    .catch((error) => {
+      // code for when there is an error
+      console.log(error);
+    });
 
   return (
     <div className="bar">
@@ -75,7 +75,7 @@ function InputBar({ curUser }) {
           <img src="https://img.icons8.com/external-basicons-solid-edtgraphics/150/undefined/external-delete-ui-elements-basicons-solid-edtgraphics-2.png" className="bar-btn deleteBtn" alt="delete button" />
         </button>
       </section>
-      <button type="button" className="checkDiv" onClick={synthesizeToSpeaker} onTouchTap={synthesizeToSpeaker}>
+      <button type="button" className="checkDiv" onClick={synthesizeToSpeaker}>
         <img src="https://img.icons8.com/material-rounded/96/000000/speaker.png" className="bar-btn checkBtn" alt="speaker button" />
       </button>
     </div>
